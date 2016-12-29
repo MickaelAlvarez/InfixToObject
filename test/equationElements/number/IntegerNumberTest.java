@@ -1,4 +1,4 @@
-package equationElements;
+package equationElements.number;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,7 +7,7 @@ import org.junit.Test;
 import elements.number.INumber;
 import elements.number.NumberInteger;
 
-public class NumberTest {
+public class IntegerNumberTest {
 
 	@Test
 	public void IntegerNumbershouldReturnTheIntegerValue() {
