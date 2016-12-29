@@ -1,4 +1,4 @@
-package equationElements.binaryOperator.integer;
+package equationElements.binaryOperator;
 
 import static org.junit.Assert.assertEquals;
 
