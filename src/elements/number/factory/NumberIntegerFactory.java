@@ -4,9 +4,9 @@ import elements.number.NumberInteger;
 
 public class NumberIntegerFactory implements NumberFactory<NumberInteger, Integer> {
 
-    @Override
-    public NumberInteger create(Integer param) {
-	return new NumberInteger(param);
-    }
+	@Override
+	public NumberInteger create(Integer param) {
+		return new NumberInteger(param);
+	}
 
 }
