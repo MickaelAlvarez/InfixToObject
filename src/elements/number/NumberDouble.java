@@ -27,4 +27,9 @@ public class NumberDouble implements INumber<Double> {
 		return value - other.getValue();
 	}
 
+	@Override
+	public Double solve() {
+	    return getValue();
+	}
+
 }

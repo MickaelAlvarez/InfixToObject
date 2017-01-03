@@ -27,4 +27,9 @@ public class NumberInteger implements INumber<Integer> {
 		return value - other.getValue();
 	}
 
+	@Override
+	public Integer solve() {
+	    return getValue();
+	}
+
 }

@@ -27,4 +27,9 @@ public class NumberFloat implements INumber<Float> {
 		return value - other.getValue();
 	}
 
+	@Override
+	public Float solve() {
+	    return getValue();
+	}
+
 }

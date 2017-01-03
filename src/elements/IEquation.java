@@ -1,5 +1,5 @@
 package elements;
 
-public interface IEquation {
-
+public interface IEquation<T> {
+    public T solve();
 }
