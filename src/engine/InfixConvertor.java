@@ -1,7 +1,6 @@
 package engine;
 
 import elements.IEquation;
-import elements.number.INumber;
 import elements.number.NumberInteger;
 
 public class InfixConvertor<T> {
