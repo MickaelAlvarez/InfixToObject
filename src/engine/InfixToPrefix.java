@@ -66,7 +66,7 @@ public class InfixToPrefix {
 	}
     }
 
-    private static boolean isOperator(char c) {
+    public static boolean isOperator(char c) {
 	switch (c) {
 	case '+':
 	case '-':

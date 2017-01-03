@@ -13,7 +13,14 @@ public class InfixConvertorTest {
 	String value = "1";
 	InfixConvertor<Integer> convertor = new InfixConvertor<Integer>(value);
 	assertTrue(convertor.convert() instanceof INumber<?>);
-	assertEquals(1, convertor.convert().solve().intValue());
+	assertEquals(Integer.parseInt(value), convertor.convert().solve().intValue());
     }
 
+    @Test
+    public void shouldConvertAnOtherNumber() {
+	String value = "10";
+	InfixConvertor<Integer> convertor = new InfixConvertor<Integer>(value);
+	assertTrue(convertor.convert() instanceof INumber<?>);
+	assertEquals(Integer.parseInt(value), convertor.convert().solve().intValue());
+    }
 }
