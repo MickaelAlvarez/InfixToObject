@@ -1,6 +1,8 @@
 package engine;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,12 +10,12 @@ import org.junit.Test;
 import elements.number.INumber;
 import engine.exception.WrongPrefixFormatError;
 
-public class InfixConvertorTest {
-    private InfixConvertor convertor;   
+public class PrefixConvertorTest {
+    private PrefixConvertor convertor;
     
     @Before
     public void before() {
-	convertor = new InfixConvertor(new PrefixConvertor());
+	convertor = new PrefixConvertor();
     }
 
     @Test
@@ -37,8 +39,18 @@ public class InfixConvertorTest {
 	} catch (WrongPrefixFormatError e) {
 	    fail();
 	}
-	
     }
-    
-    
+
+    @Test
+    public void wrongFormatShouldThrowAnError() {
+	String value = "1+1";
+	
+	try {
+	    convertor.convert(value);
+	    fail();
+	} catch(WrongPrefixFormatError e) {
+	    // Should be thrown
+	}
+    }
+
 }

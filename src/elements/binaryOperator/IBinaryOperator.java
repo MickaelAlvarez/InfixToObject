@@ -1,5 +1,7 @@
 package elements.binaryOperator;
 
-public interface IBinaryOperator<C> {
+import elements.IEquation;
+
+public interface IBinaryOperator<C> extends IEquation<C> {
     public C solve();
 }
