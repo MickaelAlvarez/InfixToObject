@@ -4,9 +4,9 @@ import elements.number.NumberFloat;
 
 public class NumberFloatFactory implements NumberFactory<NumberFloat, Float> {
 
-	@Override
-	public NumberFloat create(Float param) {
-		return new NumberFloat(param);
-	}
+    @Override
+    public NumberFloat create(Float param) {
+        return new NumberFloat(param);
+    }
 
 }

@@ -4,25 +4,25 @@ import elements.number.INumber;
 import elements.number.factory.NumberFactory;
 
 public class Adder<C, T extends INumber<C>> extends BinaryOperator<C, T> {
-    
+
     public Adder(T leftOperand, T rightOperand) {
-	super(leftOperand, rightOperand);
+        super(leftOperand, rightOperand);
     }
-    
+
     public Adder(IBinaryOperator<C> leftOperand, T rightOperand, NumberFactory<T, C> factory) {
-	super(leftOperand, rightOperand, factory);
+        super(leftOperand, rightOperand, factory);
     }
 
     public Adder(T leftOperand, IBinaryOperator<C> rightOperand, NumberFactory<T, C> factory) {
-	super(leftOperand, rightOperand, factory);
+        super(leftOperand, rightOperand, factory);
     }
-    
+
     public Adder(IBinaryOperator<C> leftOperand, IBinaryOperator<C> rightOperand, NumberFactory<T, C> factory) {
-	super(leftOperand, rightOperand, factory);
+        super(leftOperand, rightOperand, factory);
     }
 
     @Override
     public C solve() {
-	return leftOperand.add(rightOperand);
+        return leftOperand.add(rightOperand);
     }
 }
