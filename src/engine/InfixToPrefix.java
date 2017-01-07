@@ -9,6 +9,7 @@ import java.util.Stack;
  *
  */
 public class InfixToPrefix {
+    public static String SEPARATOR = " ";
 
     public static String convert(String infixEq) {
         Stack<Character> stack = new Stack<Character>();
@@ -17,13 +18,15 @@ public class InfixToPrefix {
 
         for (char c : reversedInfix.toCharArray()) {
             if (!isOperator(c)) {
-                prefixedEq.append(c);
+                //prefixedEq.append(c);
+                appendWithSeparator(prefixedEq, c);
             } else {
                 if (c == ')') {
                     stack.push(c);
                 } else if (c == '(') {
                     while (stack.lastElement() != ')') {
-                        prefixedEq.append(stack.pop());
+                        //prefixedEq.append(stack.pop());
+                        appendWithSeparator(prefixedEq, stack.pop());
                     }
                     stack.pop();
                 } else {
@@ -33,7 +36,8 @@ public class InfixToPrefix {
                         stack.push(c);
                     } else {
                         while (!stack.isEmpty() && priority(stack.lastElement()) >= priority(c)) {
-                            prefixedEq.append(stack.pop());
+                            //prefixedEq.append(stack.pop());
+                            appendWithSeparator(prefixedEq, stack.pop());
                         }
                         stack.push(c);
                     }
@@ -46,6 +50,11 @@ public class InfixToPrefix {
         }
 
         return new StringBuilder(prefixedEq).reverse().toString();
+    }
+    
+    private static void appendWithSeparator(StringBuilder tobeAppended, char toAppend) {
+        tobeAppended.append(toAppend);
+        tobeAppended.append(SEPARATOR);
     }
 
     private static int priority(char c) {
