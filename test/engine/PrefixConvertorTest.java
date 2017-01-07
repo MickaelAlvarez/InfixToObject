@@ -23,7 +23,7 @@ public class PrefixConvertorTest {
         String value = "1";
         try {
             assertTrue(convertor.convert(value) instanceof INumber<?>);
-            assertEquals(Integer.parseInt(value), convertor.convert(value).solve().intValue());
+            assertEquals(Double.parseDouble(value), convertor.convert(value).solve().doubleValue(), 0);
         } catch (WrongPrefixFormatError e) {
             fail();
         }
@@ -35,7 +35,7 @@ public class PrefixConvertorTest {
         String value = "10";
         try {
             assertTrue(convertor.convert(value) instanceof INumber<?>);
-            assertEquals(Integer.parseInt(value), convertor.convert(value).solve().intValue());
+            assertEquals(Double.parseDouble(value), convertor.convert(value).solve().doubleValue(), 0);
         } catch (WrongPrefixFormatError e) {
             fail();
         }
