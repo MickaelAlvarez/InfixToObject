@@ -7,4 +7,9 @@ public class AdditionRepresentation extends OperatorRepresentation {
 		return Type.ADDITION;
 	}
 
+	@Override
+	public int getPriority() {
+		return 2;
+	}
+
 }

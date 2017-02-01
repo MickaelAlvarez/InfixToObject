@@ -48,4 +48,10 @@ public class NumberRepresentationTest {
 		DoubleNumberRepresentation doubleR = new DoubleNumberRepresentation(expected);
 		assertEquals(expected, doubleR.getDouble().doubleValue(), 0);
 	}
+	
+	@Test
+	public void testNumberPriority() {
+		DoubleNumberRepresentation doubleR = new DoubleNumberRepresentation(0);
+		assertEquals(0, doubleR.getPriority());
+	}
 }

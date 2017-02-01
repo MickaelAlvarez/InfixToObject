@@ -7,4 +7,5 @@ public interface IElementRepresentation {
 	public boolean isOperator();
 	public Type getType();
 	public Double getDouble();
+	public int getPriority();
 }

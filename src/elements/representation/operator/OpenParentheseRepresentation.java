@@ -7,4 +7,9 @@ public class OpenParentheseRepresentation extends OperatorRepresentation {
 		return Type.OPEN_PARENTHESE;
 	}
 
+	@Override
+	public int getPriority() {
+		return 1;
+	}
+
 }

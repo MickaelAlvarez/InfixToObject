@@ -7,4 +7,9 @@ public class PowerRepresentation extends OperatorRepresentation {
 		return Type.POWER;
 	}
 
+	@Override
+	public int getPriority() {
+		return 6;
+	}
+
 }

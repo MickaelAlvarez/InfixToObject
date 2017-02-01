@@ -1,6 +1,11 @@
 package engine;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Stack;
+
+import elements.representation.IElementRepresentation;
+import elements.representation.IElementRepresentation.Type;
 
 /**
  * Convert from http://scanftree.com/Data_Structure/infix-to-prefix
@@ -9,84 +14,45 @@ import java.util.Stack;
  *
  */
 public class InfixToPrefix {
-    public static String SEPARATOR = " ";
 
-    public static String convert(String infixEq) {
-        Stack<Character> stack = new Stack<Character>();
-        StringBuilder prefixedEq = new StringBuilder();
-        String reversedInfix = new StringBuilder(infixEq).reverse().toString();
+    public static ArrayList<IElementRepresentation> convert(ArrayList<IElementRepresentation> infixEq) {
+        Stack<IElementRepresentation> stack = new Stack<IElementRepresentation>();
+        ArrayList<IElementRepresentation> prefixedEq = new ArrayList<IElementRepresentation>();
+        ArrayList<IElementRepresentation> reversedInfix = new ArrayList<IElementRepresentation>(infixEq);
+        Collections.reverse(reversedInfix);
 
-        for (char c : reversedInfix.toCharArray()) {
-            if (!isOperator(c)) {
-                //prefixedEq.append(c);
-                appendWithSeparator(prefixedEq, c);
+        for (IElementRepresentation element : reversedInfix) {
+            if (!element.isOperator()) {
+            	prefixedEq.add(element);
             } else {
-                if (c == ')') {
-                    stack.push(c);
-                } else if (c == '(') {
-                    while (stack.lastElement() != ')') {
-                        //prefixedEq.append(stack.pop());
-                        appendWithSeparator(prefixedEq, stack.pop());
+                if (element.getType().equals(Type.CLOSE_PARENTHESE)) {
+                    stack.push(element);
+                } else if (element.getType().equals(Type.OPEN_PARENTHESE)) {
+                    while (!stack.lastElement().getType().equals(Type.CLOSE_PARENTHESE)) {
+                    	prefixedEq.add(stack.pop());
                     }
                     stack.pop();
                 } else {
                     if (stack.isEmpty()) {
-                        stack.push(c);
-                    } else if (priority(stack.lastElement()) <= priority(c)) {
-                        stack.push(c);
+                        stack.push(element);
+                    } else if (stack.lastElement().getPriority() <= element.getPriority()) {
+                        stack.push(element);
                     } else {
-                        while (!stack.isEmpty() && priority(stack.lastElement()) >= priority(c)) {
-                            //prefixedEq.append(stack.pop());
-                            appendWithSeparator(prefixedEq, stack.pop());
+                        while (!stack.isEmpty() && stack.lastElement().getPriority() >= element.getPriority()) {
+                            prefixedEq.add(stack.pop());
                         }
-                        stack.push(c);
+                        stack.push(element);
                     }
                 }
             }
         }
 
         while (!stack.isEmpty()) {
-            prefixedEq.append(stack.pop());
+        	prefixedEq.add(stack.pop());
         }
 
-        return new StringBuilder(prefixedEq).reverse().toString();
+        Collections.reverse(prefixedEq);
+        return prefixedEq;
     }
     
-    private static void appendWithSeparator(StringBuilder tobeAppended, char toAppend) {
-        tobeAppended.append(toAppend);
-        tobeAppended.append(SEPARATOR);
-    }
-
-    private static int priority(char c) {
-        switch (c) {
-        case '(':
-        case ')':
-            return 1;
-        case '+':
-        case '-':
-            return 2;
-        case '*':
-        case '/':
-            return 4;
-        case '^':
-            return 6;
-        default:
-            return 0;
-        }
-    }
-
-    public static boolean isOperator(char c) {
-        switch (c) {
-        case '+':
-        case '-':
-        case '*':
-        case '/':
-        case '^':
-        case '(':
-        case ')':
-            return true;
-        default:
-            return false;
-        }
-    }
 }

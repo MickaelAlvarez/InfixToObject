@@ -88,4 +88,46 @@ public class OperatorRepresentationTest {
 		CloseParentheseRepresentation representation = new CloseParentheseRepresentation();
 		assertEquals(Type.CLOSE_PARENTHESE, representation.getType());
 	}
+	
+	@Test
+	public void testAdditionPriority() {
+		AdditionRepresentation representation = new AdditionRepresentation();
+		assertEquals(2, representation.getPriority());
+	}
+
+	@Test
+	public void testSubstractionPriority() {
+		SubstractRepresentation representation = new SubstractRepresentation();
+		assertEquals(2, representation.getPriority());
+	}
+	
+	@Test
+	public void testMultiplicationPriority() {
+		MultiplicationRepresentation representation = new MultiplicationRepresentation();
+		assertEquals(4, representation.getPriority());
+	}
+	
+	@Test
+	public void testDivisionPriority() {
+		DivisionRepresentation representation = new DivisionRepresentation();
+		assertEquals(4, representation.getPriority());
+	}
+	
+	@Test
+	public void testPowerPriority() {
+		PowerRepresentation representation = new PowerRepresentation();
+		assertEquals(6, representation.getPriority());
+	}
+	
+	@Test
+	public void testOpenParenthesePriority() {
+		OpenParentheseRepresentation representation = new OpenParentheseRepresentation();
+		assertEquals(1, representation.getPriority());
+	}
+	
+	@Test
+	public void testCloseParenthesePriority() {
+		CloseParentheseRepresentation representation = new CloseParentheseRepresentation();
+		assertEquals(1, representation.getPriority());
+	}
 }

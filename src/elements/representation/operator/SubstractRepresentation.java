@@ -7,4 +7,9 @@ public class SubstractRepresentation extends OperatorRepresentation {
 		return Type.SUBSTRACTION;
 	}
 
+	@Override
+	public int getPriority() {
+		return 2;
+	}
+
 }

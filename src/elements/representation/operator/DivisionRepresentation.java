@@ -7,4 +7,9 @@ public class DivisionRepresentation extends OperatorRepresentation {
 		return Type.DIVISION;
 	}
 
+	@Override
+	public int getPriority() {
+		return 4;
+	}
+
 }

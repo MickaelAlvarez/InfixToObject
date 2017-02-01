@@ -7,4 +7,9 @@ public class MultiplicationRepresentation extends OperatorRepresentation {
 		return Type.MULTIPLICATION;
 	}
 
+	@Override
+	public int getPriority() {
+		return 4;
+	}
+
 }

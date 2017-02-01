@@ -9,4 +9,8 @@ public abstract class NumberRepresentation implements IElementRepresentation {
 		return false;
 	}
 
+	@Override
+	public int getPriority() {
+		return 0;
+	}
 }
