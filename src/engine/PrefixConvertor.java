@@ -10,6 +10,7 @@ public class PrefixConvertor implements Convertor<Double> {
 
     }
 
+    @Override
     public IEquation<Double> convert(String equation) throws WrongPrefixFormatError {
         if (InfixToPrefix.isOperator(equation.charAt(0))) {
 
