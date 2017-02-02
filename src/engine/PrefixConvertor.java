@@ -1,7 +1,12 @@
 package engine;
 
+import java.util.ArrayList;
+
 import elements.IEquation;
 import elements.number.NumberDouble;
+import elements.representation.IElementRepresentation;
+import elements.representation.IElementRepresentation.Type;
+import elements.representation.number.DoubleNumberRepresentation;
 import engine.exception.WrongPrefixFormatError;
 
 public class PrefixConvertor implements Convertor<Double> {
@@ -11,32 +16,19 @@ public class PrefixConvertor implements Convertor<Double> {
     }
 
     @Override
-    public IEquation<Double> convert(String equation) throws WrongPrefixFormatError {
-        if (InfixToPrefix.isOperator(equation.charAt(0))) {
+    public IEquation<Double> convert(ArrayList<IElementRepresentation> equation) throws WrongPrefixFormatError {
+        if (equation.get(0).isOperator()) {
 
         } else {
-            int endNumberIndex = getEndNumberIndex(equation);
-
-            if (endNumberIndex == equation.length()) {
-                return new NumberDouble(Double.parseDouble(equation));
+            if (equation.get(0).getType().equals(Type.DOUBLE)) {
+                return new NumberDouble(((DoubleNumberRepresentation) equation.get(0)).getDouble());
             } else {
-                throw new WrongPrefixFormatError(equation);
+//                throw new WrongPrefixFormatError(equation);
+            	// TODO
             }
         }
 
         return null;
-    }
-
-    private int getEndNumberIndex(String equation) {
-        int endNumberIndex;
-
-        for (endNumberIndex = 0; endNumberIndex < equation.length(); endNumberIndex++) {
-            if (InfixToPrefix.isOperator(equation.charAt(endNumberIndex))) {
-                break;
-            }
-        }
-
-        return endNumberIndex;
     }
 
 }
