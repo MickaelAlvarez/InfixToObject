@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import elements.binaryOperator.Adder;
-import elements.binaryOperator.IBinaryOperator;
 import elements.number.INumber;
 import elements.representation.IElementRepresentation;
 import elements.representation.number.DoubleNumberRepresentation;
@@ -67,6 +66,27 @@ public class PrefixConvertorTest {
         try {
         	assertTrue(convertor.convert(INPUT) instanceof Adder);
             assertEquals(2d, convertor.convert(INPUT).solve().doubleValue(), 0);
+        } catch (WrongPrefixFormatError e) {
+            fail();
+        }
+    }
+    
+    /**
+     * + + 1 1 1
+     */
+    @Test
+    public void shouldConvertTwoAddition() {
+    	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
+    	IElementRepresentation value1 = new DoubleNumberRepresentation(1);
+    	IElementRepresentation addition = new AdditionRepresentation();
+    	INPUT.add(addition);
+    	INPUT.add(addition);
+    	INPUT.add(value1);
+    	INPUT.add(value1);
+    	INPUT.add(value1);
+        try {
+        	assertTrue(convertor.convert(INPUT) instanceof Adder);
+            assertEquals(3d, convertor.convert(INPUT).solve().doubleValue(), 0);
         } catch (WrongPrefixFormatError e) {
             fail();
         }

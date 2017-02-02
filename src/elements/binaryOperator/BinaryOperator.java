@@ -1,5 +1,6 @@
 package elements.binaryOperator;
 
+import elements.IEquation;
 import elements.number.INumber;
 import elements.number.factory.NumberFactory;
 
@@ -21,7 +22,7 @@ public abstract class BinaryOperator<C, T extends INumber<C>> implements IBinary
         this.rightOperand = factory.create(rightOperand.solve());
     }
 
-    public BinaryOperator(IBinaryOperator<C> leftOperand, IBinaryOperator<C> rightOperand,
+    public BinaryOperator(IEquation<C> leftOperand, IEquation<C> rightOperand,
             NumberFactory<T, C> factory) {
         this.leftOperand = factory.create(leftOperand.solve());
         this.rightOperand = factory.create(rightOperand.solve());
