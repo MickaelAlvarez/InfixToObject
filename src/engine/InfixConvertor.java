@@ -1,6 +1,9 @@
 package engine;
 
+import java.util.ArrayList;
+
 import elements.IEquation;
+import elements.representation.IElementRepresentation;
 import engine.exception.WrongPrefixFormatError;
 
 public class InfixConvertor implements Convertor<Double> {
@@ -10,7 +13,7 @@ public class InfixConvertor implements Convertor<Double> {
         this.convertor = convertor;
     }
 
-    public IEquation<Double> convert(String equation) throws WrongPrefixFormatError {
+    public IEquation<Double> convert(ArrayList<IElementRepresentation> equation) throws WrongPrefixFormatError {
         // TODO wrong infix format
         return convertor.convert(InfixToPrefix.convert(equation));
     }

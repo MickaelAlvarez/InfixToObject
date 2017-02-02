@@ -2,10 +2,14 @@ package engine;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import elements.number.INumber;
+import elements.representation.IElementRepresentation;
+import elements.representation.number.DoubleNumberRepresentation;
 import engine.exception.WrongPrefixFormatError;
 
 public class InfixConvertorTest {
@@ -18,10 +22,12 @@ public class InfixConvertorTest {
 
     @Test
     public void shouldConvertANumber() {
-        String value = "1";
+    	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
+    	IElementRepresentation value = new DoubleNumberRepresentation(1);
+    	INPUT.add(value);
         try {
-            assertTrue(convertor.convert(value) instanceof INumber<?>);
-            assertEquals(Double.parseDouble(value), convertor.convert(value).solve().doubleValue(), 0);
+        	assertTrue(convertor.convert(INPUT) instanceof INumber<?>);
+            assertEquals(value.getDouble(), convertor.convert(INPUT).solve().doubleValue(), 0);
         } catch (WrongPrefixFormatError e) {
             fail();
         }
@@ -30,13 +36,14 @@ public class InfixConvertorTest {
 
     @Test
     public void shouldConvertAnOtherNumber() {
-        String value = "10";
+    	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
+    	IElementRepresentation value = new DoubleNumberRepresentation(10);
+    	INPUT.add(value);
         try {
-            assertTrue(convertor.convert(value) instanceof INumber<?>);
-            assertEquals(Double.parseDouble(value), convertor.convert(value).solve().doubleValue(), 0);
+        	assertTrue(convertor.convert(INPUT) instanceof INumber<?>);
+            assertEquals(value.getDouble(), convertor.convert(INPUT).solve().doubleValue(), 0);
         } catch (WrongPrefixFormatError e) {
             fail();
         }
-
     }
 }
