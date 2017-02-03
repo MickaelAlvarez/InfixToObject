@@ -1,5 +1,6 @@
 package elements.binaryOperator;
 
+import elements.IEquation;
 import elements.number.INumber;
 import elements.number.factory.NumberFactory;
 
@@ -17,7 +18,7 @@ public class Multiplier<C, T extends INumber<C>> extends BinaryOperator<C, T> {
         super(leftOperand, rightOperand, factory);
     }
 
-    public Multiplier(IBinaryOperator<C> leftOperand, IBinaryOperator<C> rightOperand, NumberFactory<T, C> factory) {
+    public Multiplier(IEquation<C> leftOperand, IEquation<C> rightOperand, NumberFactory<T, C> factory) {
         super(leftOperand, rightOperand, factory);
     }
 
