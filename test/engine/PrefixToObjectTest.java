@@ -21,12 +21,12 @@ import elements.representation.operator.MultiplicationRepresentation;
 import elements.representation.operator.SubstractRepresentation;
 import engine.exception.WrongPrefixFormatError;
 
-public class PrefixConvertorTest {
-    private PrefixConvertor convertor;
+public class PrefixToObjectTest {
+    private PrefixToObject convertor;
 
     @Before
     public void before() {
-        convertor = new PrefixConvertor();
+        convertor = new PrefixToObject();
     }
 
     @Test

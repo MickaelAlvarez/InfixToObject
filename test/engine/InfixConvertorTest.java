@@ -17,7 +17,7 @@ public class InfixConvertorTest {
 
     @Before
     public void before() {
-        convertor = new InfixConvertor(new PrefixConvertor());
+        convertor = new InfixConvertor(new PrefixToObject());
     }
 
     @Test

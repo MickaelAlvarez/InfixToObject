@@ -13,9 +13,9 @@ import elements.representation.IElementRepresentation.Type;
 import elements.representation.number.DoubleNumberRepresentation;
 import engine.exception.WrongPrefixFormatError;
 
-public class PrefixConvertor implements Convertor<Double> {
+public class PrefixToObject implements Convertor<Double> {
 
-	public PrefixConvertor() {
+	public PrefixToObject() {
 
 	}
 

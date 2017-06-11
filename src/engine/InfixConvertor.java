@@ -7,9 +7,9 @@ import elements.representation.IElementRepresentation;
 import engine.exception.WrongPrefixFormatError;
 
 public class InfixConvertor implements Convertor<Double> {
-    private PrefixConvertor convertor;
+    private PrefixToObject convertor;
 
-    public InfixConvertor(PrefixConvertor convertor) {
+    public InfixConvertor(PrefixToObject convertor) {
         this.convertor = convertor;
     }
 
