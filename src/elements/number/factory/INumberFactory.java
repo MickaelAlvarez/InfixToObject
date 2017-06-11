@@ -1,5 +1,7 @@
 package elements.number.factory;
 
-public interface INumberFactory<T, P> {
+import elements.number.INumber;
+
+public interface INumberFactory<T extends INumber<P>, P> {
     public T create(P param);
 }
