@@ -18,6 +18,10 @@ import elements.representation.operator.SubstractRepresentation;
 
 public class InfixToPrefixTest {
 
+	/**
+     * INPUT = A
+     * EXPECTED = A
+     */
     @Test
     public void numberTest() {
     	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
