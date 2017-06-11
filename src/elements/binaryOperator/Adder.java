@@ -2,7 +2,7 @@ package elements.binaryOperator;
 
 import elements.IEquation;
 import elements.number.INumber;
-import elements.number.factory.NumberFactory;
+import elements.number.factory.INumberFactory;
 
 public class Adder<C, T extends INumber<C>> extends BinaryOperator<C, T> {
 
@@ -10,15 +10,15 @@ public class Adder<C, T extends INumber<C>> extends BinaryOperator<C, T> {
         super(leftOperand, rightOperand);
     }
 
-    public Adder(IBinaryOperator<C> leftOperand, T rightOperand, NumberFactory<T, C> factory) {
+    public Adder(IBinaryOperator<C> leftOperand, T rightOperand, INumberFactory<T, C> factory) {
         super(leftOperand, rightOperand, factory);
     }
 
-    public Adder(T leftOperand, IBinaryOperator<C> rightOperand, NumberFactory<T, C> factory) {
+    public Adder(T leftOperand, IBinaryOperator<C> rightOperand, INumberFactory<T, C> factory) {
         super(leftOperand, rightOperand, factory);
     }
 
-    public Adder(IEquation<C> leftOperand, IEquation<C> rightOperand, NumberFactory<T, C> factory) {
+    public Adder(IEquation<C> leftOperand, IEquation<C> rightOperand, INumberFactory<T, C> factory) {
         super(leftOperand, rightOperand, factory);
     }
 
