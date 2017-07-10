@@ -8,11 +8,6 @@ public class DoubleNumberRepresentation extends NumberRepresentation {
 	}
 
 	@Override
-	public Type getType() {
-		return Type.DOUBLE;
-	}
-
-	@Override
 	public Double getDouble() {
 		return value;
 	}

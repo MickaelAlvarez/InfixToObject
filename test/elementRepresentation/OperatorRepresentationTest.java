@@ -8,12 +8,17 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import elements.representation.IElementRepresentation.Type;
+import elements.binaryOperator.Adder;
+import elements.binaryOperator.Multiplier;
+import elements.binaryOperator.Subtractor;
+import elements.number.NumberDouble;
+import elements.number.factory.NumberDoubleFactory;
 import elements.representation.operator.AdditionRepresentation;
 import elements.representation.operator.CloseParentheseRepresentation;
 import elements.representation.operator.DivisionRepresentation;
 import elements.representation.operator.MultiplicationRepresentation;
 import elements.representation.operator.OpenParentheseRepresentation;
+import elements.representation.operator.OperatorRepresentation;
 import elements.representation.operator.PowerRepresentation;
 import elements.representation.operator.SubstractRepresentation;
 
@@ -45,48 +50,6 @@ public class OperatorRepresentationTest {
 		OpenParentheseRepresentation openParenthese = new OpenParentheseRepresentation();
 		CloseParentheseRepresentation closeParenthese = new CloseParentheseRepresentation();
 		assertTrue(add.isOperator() && sub.isOperator() && mul.isOperator() && div.isOperator() && pow.isOperator() && openParenthese.isOperator() && closeParenthese.isOperator());
-	}
-	
-	@Test
-	public void testAdditionType() {
-		AdditionRepresentation representation = new AdditionRepresentation();
-		assertEquals(Type.ADDITION, representation.getType());
-	}
-
-	@Test
-	public void testSubstractionType() {
-		SubstractRepresentation representation = new SubstractRepresentation();
-		assertEquals(Type.SUBSTRACTION, representation.getType());
-	}
-	
-	@Test
-	public void testMultiplicationType() {
-		MultiplicationRepresentation representation = new MultiplicationRepresentation();
-		assertEquals(Type.MULTIPLICATION, representation.getType());
-	}
-	
-	@Test
-	public void testDivisionType() {
-		DivisionRepresentation representation = new DivisionRepresentation();
-		assertEquals(Type.DIVISION, representation.getType());
-	}
-	
-	@Test
-	public void testPowerType() {
-		PowerRepresentation representation = new PowerRepresentation();
-		assertEquals(Type.POWER, representation.getType());
-	}
-	
-	@Test
-	public void testOpenParentheseType() {
-		OpenParentheseRepresentation representation = new OpenParentheseRepresentation();
-		assertEquals(Type.OPEN_PARENTHESE, representation.getType());
-	}
-	
-	@Test
-	public void testCloseParentheseType() {
-		CloseParentheseRepresentation representation = new CloseParentheseRepresentation();
-		assertEquals(Type.CLOSE_PARENTHESE, representation.getType());
 	}
 	
 	@Test
@@ -130,4 +93,23 @@ public class OperatorRepresentationTest {
 		CloseParentheseRepresentation representation = new CloseParentheseRepresentation();
 		assertEquals(1, representation.getPriority());
 	}
+	
+	@Test
+    public void addRepresentationShouldBuildAnAdder() {
+    	OperatorRepresentation<Double, NumberDouble> addition = new AdditionRepresentation<Double, NumberDouble>();
+    	assertTrue(addition.build(new NumberDouble(0d), new NumberDouble(0d), new NumberDoubleFactory()) instanceof Adder<?,?>);
+    }
+	
+	@Test
+	public void substractionRepresentationShouldBuildASubstractor() {
+		OperatorRepresentation<Double, NumberDouble> subtractor = new SubstractRepresentation<Double, NumberDouble>();
+    	assertTrue(subtractor.build(new NumberDouble(0d), new NumberDouble(0d), new NumberDoubleFactory()) instanceof Subtractor<?, ?>);
+	}
+	
+	@Test
+	public void multiplicationRepresentationShouldBuildAMultiplier() {
+		OperatorRepresentation<Double, NumberDouble> multiplier = new MultiplicationRepresentation<Double, NumberDouble>();
+    	assertTrue(multiplier.build(new NumberDouble(0d), new NumberDouble(0d), new NumberDoubleFactory()) instanceof Multiplier<?, ?>);
+	}
+	
 }

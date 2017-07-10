@@ -2,6 +2,7 @@ package elementRepresentation;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -9,7 +10,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import elements.representation.IElementRepresentation.Type;
 import elements.representation.number.DoubleNumberRepresentation;
 
 public class NumberRepresentationTest {
@@ -39,7 +39,7 @@ public class NumberRepresentationTest {
 	@Test
 	public void testDoubleNumberType() {
 		DoubleNumberRepresentation doubleR = new DoubleNumberRepresentation(0);
-		assertEquals(Type.DOUBLE, doubleR.getType());
+		assertTrue(!doubleR.isOperator() && !doubleR.isBlockStart() && !doubleR.isBlockEnd());
 	}
 	
 	@Test

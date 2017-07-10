@@ -3,14 +3,11 @@ package engine;
 import java.util.ArrayList;
 
 import elements.IEquation;
-import elements.binaryOperator.Adder;
-import elements.binaryOperator.Multiplier;
-import elements.binaryOperator.Subtractor;
 import elements.number.NumberDouble;
 import elements.number.factory.NumberDoubleFactory;
 import elements.representation.IElementRepresentation;
-import elements.representation.IElementRepresentation.Type;
 import elements.representation.number.DoubleNumberRepresentation;
+import elements.representation.operator.OperatorRepresentation;
 import engine.exception.WrongPrefixFormatError;
 
 public class PrefixToObject implements Convertor<Double> {
@@ -23,28 +20,15 @@ public class PrefixToObject implements Convertor<Double> {
 	public IEquation<Double> convert(ArrayList<IElementRepresentation> equation) throws WrongPrefixFormatError {
 		if (equation.get(0).isOperator()) {
 			int rightOperandStartIndex = getRightOperandStartIndex(equation);
-			switch (equation.get(0).getType()) {
-			case ADDITION:
-				return new Adder<Double, NumberDouble>(convert(new ArrayList<>(equation.subList(1, rightOperandStartIndex))), convert(new ArrayList<>(equation.subList(rightOperandStartIndex, equation.size()))), new NumberDoubleFactory());
-			case SUBSTRACTION:	
-				return new Subtractor<Double, NumberDouble>(convert(new ArrayList<>(equation.subList(1, rightOperandStartIndex))), convert(new ArrayList<>(equation.subList(rightOperandStartIndex, equation.size()))), new NumberDoubleFactory());
-			case MULTIPLICATION:
-				return new Multiplier<Double, NumberDouble>(convert(new ArrayList<>(equation.subList(1, rightOperandStartIndex))), convert(new ArrayList<>(equation.subList(rightOperandStartIndex, equation.size()))), new NumberDoubleFactory());
-			default:
-				break;
-			}
-			
+			OperatorRepresentation<Double, NumberDouble> operator = (OperatorRepresentation<Double, NumberDouble>) equation.get(0);
+			return operator.build(convert(new ArrayList<>(equation.subList(1, rightOperandStartIndex))), convert(new ArrayList<>(equation.subList(rightOperandStartIndex, equation.size()))), new NumberDoubleFactory());
 		} else {
 			if (equation.size() == 1) {
-				if (equation.get(0).getType().equals(Type.DOUBLE)) {
-					return new NumberDouble(((DoubleNumberRepresentation) equation.get(0)).getDouble());
-				}
+				return new NumberDouble(((DoubleNumberRepresentation) equation.get(0)).getDouble());
 			} else {
-				 throw new WrongPrefixFormatError(equation);
+				throw new WrongPrefixFormatError(equation);
 			}
 		}
-
-		return null;
 	}
 
 	private int getRightOperandStartIndex(ArrayList<IElementRepresentation> equation) {

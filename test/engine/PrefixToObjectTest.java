@@ -9,15 +9,19 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import elements.IEquation;
 import elements.binaryOperator.Adder;
 import elements.binaryOperator.Multiplier;
 import elements.binaryOperator.Subtractor;
 import elements.number.INumber;
+import elements.number.NumberDouble;
+import elements.number.factory.NumberDoubleFactory;
 import elements.representation.IElementRepresentation;
 import elements.representation.number.DoubleNumberRepresentation;
 import elements.representation.operator.AdditionRepresentation;
 import elements.representation.operator.DivisionRepresentation;
 import elements.representation.operator.MultiplicationRepresentation;
+import elements.representation.operator.OperatorRepresentation;
 import elements.representation.operator.SubstractRepresentation;
 import engine.exception.WrongPrefixFormatError;
 

@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Stack;
 
 import elements.representation.IElementRepresentation;
-import elements.representation.IElementRepresentation.Type;
 
 /**
  * Convert from http://scanftree.com/Data_Structure/infix-to-prefix
@@ -25,10 +24,10 @@ public class InfixToPrefix {
             if (!element.isOperator()) {
             	prefixedEq.add(element);
             } else {
-                if (element.getType().equals(Type.CLOSE_PARENTHESE)) {
+                if (element.isBlockEnd()) {
                     stack.push(element);
-                } else if (element.getType().equals(Type.OPEN_PARENTHESE)) {
-                    while (!stack.lastElement().getType().equals(Type.CLOSE_PARENTHESE)) {
+                } else if (element.isBlockStart()) {
+                    while (!stack.lastElement().isBlockEnd()) {
                     	prefixedEq.add(stack.pop());
                     }
                     stack.pop();

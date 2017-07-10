@@ -8,6 +8,16 @@ public abstract class NumberRepresentation implements IElementRepresentation {
 	public boolean isOperator() {
 		return false;
 	}
+	
+	@Override
+	public boolean isBlockStart() {
+		return false;
+	}
+	
+	@Override
+	public boolean isBlockEnd() {
+		return false;
+	}
 
 	@Override
 	public int getPriority() {
