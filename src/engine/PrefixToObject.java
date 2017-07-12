@@ -3,28 +3,28 @@ package engine;
 import java.util.ArrayList;
 
 import elements.IEquation;
-import elements.number.NumberDouble;
-import elements.number.factory.NumberDoubleFactory;
 import elements.representation.IElementRepresentation;
 import elements.representation.number.DoubleNumberRepresentation;
+import elements.representation.number.NumberRepresentation;
 import elements.representation.operator.OperatorRepresentation;
 import engine.exception.WrongPrefixFormatError;
 
-public class PrefixToObject implements Convertor<Double> {
+public class PrefixToObject<T> implements Convertor<T> {
 
 	public PrefixToObject() {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public IEquation<Double> convert(ArrayList<IElementRepresentation> equation) throws WrongPrefixFormatError {
+	public IEquation<T> convert(ArrayList<IElementRepresentation> equation) throws WrongPrefixFormatError {
 		if (equation.get(0).isOperator()) {
 			int rightOperandStartIndex = getRightOperandStartIndex(equation);
-			OperatorRepresentation<Double, NumberDouble> operator = (OperatorRepresentation<Double, NumberDouble>) equation.get(0);
-			return operator.build(convert(new ArrayList<>(equation.subList(1, rightOperandStartIndex))), convert(new ArrayList<>(equation.subList(rightOperandStartIndex, equation.size()))), new NumberDoubleFactory());
+			OperatorRepresentation<T> operator = (OperatorRepresentation<T>) equation.get(0);
+			return operator.build(convert(new ArrayList<>(equation.subList(1, rightOperandStartIndex))), convert(new ArrayList<>(equation.subList(rightOperandStartIndex, equation.size()))));
 		} else {
 			if (equation.size() == 1) {
-				return new NumberDouble(((DoubleNumberRepresentation) equation.get(0)).getDouble());
+				return ((NumberRepresentation<T>)equation.get(0)).build();
 			} else {
 				throw new WrongPrefixFormatError(equation);
 			}

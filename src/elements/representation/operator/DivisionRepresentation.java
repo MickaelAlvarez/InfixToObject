@@ -2,10 +2,8 @@ package elements.representation.operator;
 
 import elements.IEquation;
 import elements.binaryOperator.BinaryOperator;
-import elements.number.INumber;
-import elements.number.factory.INumberFactory;
 
-public class DivisionRepresentation<C, T extends INumber<C>> extends BinaryOperatorRepresentation<C, T> {
+public class DivisionRepresentation extends BinaryOperatorRepresentation<Double> {
 
 	@Override
 	public int getPriority() {
@@ -13,8 +11,9 @@ public class DivisionRepresentation<C, T extends INumber<C>> extends BinaryOpera
 	}
 
 	@Override
-	public BinaryOperator<C, T> build(IEquation<C> leftEq, IEquation<C> rightEq, INumberFactory<T, C> factory) {
-		return null; // TODO
+	public BinaryOperator<Double> build(IEquation<Double> leftEq, IEquation<Double> rightEq) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

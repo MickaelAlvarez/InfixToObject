@@ -1,15 +1,23 @@
 package elements.representation.number;
 
-public class DoubleNumberRepresentation extends NumberRepresentation {
-	private Double value;
+import elements.number.DoubleOperator;
+import elements.number.UnaryOperator;
+
+public class DoubleNumberRepresentation extends NumberRepresentation<Double> {
 	
-	public DoubleNumberRepresentation(double value) {
-		this.value = value;
+
+	public DoubleNumberRepresentation(Double value) {
+		super(value);
 	}
 
 	@Override
 	public Double getDouble() {
 		return value;
+	}
+
+	@Override
+	public UnaryOperator<Double> build() {
+		return new DoubleOperator(value);
 	}
 
 }

@@ -1,9 +1,16 @@
 package elements.representation.number;
 
+import elements.number.UnaryOperator;
 import elements.representation.IElementRepresentation;
 
-public abstract class NumberRepresentation implements IElementRepresentation {
+public abstract class NumberRepresentation<T> implements IElementRepresentation {
+	protected T value;
+	public abstract UnaryOperator<T> build();
 
+	public NumberRepresentation(T value) {
+		this.value = value;
+	}
+	
 	@Override
 	public boolean isOperator() {
 		return false;

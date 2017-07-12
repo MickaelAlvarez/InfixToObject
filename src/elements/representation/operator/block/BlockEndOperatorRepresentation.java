@@ -1,10 +1,8 @@
 package elements.representation.operator.block;
 
-import elements.number.INumber;
-import elements.representation.operator.BinaryOperatorRepresentation;
-import elements.representation.operator.OperatorRepresentation;
+import elements.representation.operator.BlockRepresentation;
 
-public abstract class BlockEndOperatorRepresentation<C, T extends INumber<C>> extends BinaryOperatorRepresentation<C, T>{
+public abstract class BlockEndOperatorRepresentation extends BlockRepresentation{
 	@Override
 	public boolean isBlockStart() {
 		return false;

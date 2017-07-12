@@ -25,7 +25,7 @@ public class InfixToPrefixTest {
     @Test
     public void numberTest() {
     	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-        IElementRepresentation number = new DoubleNumberRepresentation(0);
+        IElementRepresentation number = new DoubleNumberRepresentation(0d);
         INPUT.add(number);
         assertEquals(INPUT, InfixToPrefix.convert(INPUT));
     }
@@ -37,8 +37,8 @@ public class InfixToPrefixTest {
     @Test
     public void addTest() {
     	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation number1 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number2 = new DoubleNumberRepresentation(0);
+    	IElementRepresentation number1 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number2 = new DoubleNumberRepresentation(0d);
     	IElementRepresentation addition = new AdditionRepresentation();
     	INPUT.add(number1);
     	INPUT.add(addition);
@@ -57,8 +57,8 @@ public class InfixToPrefixTest {
     @Test
     public void substractTest() {
     	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation number1 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number2 = new DoubleNumberRepresentation(0);
+    	IElementRepresentation number1 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number2 = new DoubleNumberRepresentation(0d);
     	IElementRepresentation substraction = new SubstractRepresentation();
     	INPUT.add(number1);
     	INPUT.add(substraction);
@@ -77,8 +77,8 @@ public class InfixToPrefixTest {
     @Test
     public void multiplyTest() {
     	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation number1 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number2 = new DoubleNumberRepresentation(0);
+    	IElementRepresentation number1 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number2 = new DoubleNumberRepresentation(0d);
     	IElementRepresentation multiplication = new SubstractRepresentation();
     	INPUT.add(number1);
     	INPUT.add(multiplication);
@@ -97,8 +97,8 @@ public class InfixToPrefixTest {
     @Test
     public void divideTest() {
     	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation number1 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number2 = new DoubleNumberRepresentation(0);
+    	IElementRepresentation number1 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number2 = new DoubleNumberRepresentation(0d);
     	IElementRepresentation division = new DivisionRepresentation();
     	INPUT.add(number1);
     	INPUT.add(division);
@@ -117,8 +117,8 @@ public class InfixToPrefixTest {
     @Test
     public void powerTest() {
         ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation number1 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number2 = new DoubleNumberRepresentation(0);
+    	IElementRepresentation number1 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number2 = new DoubleNumberRepresentation(0d);
     	IElementRepresentation power = new PowerRepresentation();
     	INPUT.add(number1);
     	INPUT.add(power);
@@ -137,9 +137,9 @@ public class InfixToPrefixTest {
     @Test
     public void parenthesisTest() {
         ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation number1 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number2 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number3 = new DoubleNumberRepresentation(0);
+    	IElementRepresentation number1 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number2 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number3 = new DoubleNumberRepresentation(0d);
     	IElementRepresentation addition = new AdditionRepresentation();
     	IElementRepresentation multiplication = new MultiplicationRepresentation();
     	IElementRepresentation openParenthese = new OpenParentheseRepresentation();
@@ -167,14 +167,14 @@ public class InfixToPrefixTest {
     @Test
     public void prioritiesTest() {
     	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation number1 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number2 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number3 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number4 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number5 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number6 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number7 = new DoubleNumberRepresentation(0);
-    	IElementRepresentation number8 = new DoubleNumberRepresentation(0);
+    	IElementRepresentation number1 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number2 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number3 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number4 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number5 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number6 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number7 = new DoubleNumberRepresentation(0d);
+    	IElementRepresentation number8 = new DoubleNumberRepresentation(0d);
     	IElementRepresentation power = new PowerRepresentation();
     	IElementRepresentation openParenthese = new OpenParentheseRepresentation();
     	IElementRepresentation multiplication = new MultiplicationRepresentation();

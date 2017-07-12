@@ -32,13 +32,13 @@ public class NumberRepresentationTest {
 
 	@Test
 	public void testAreNotOperator() {
-		DoubleNumberRepresentation doubleR = new DoubleNumberRepresentation(0);
+		DoubleNumberRepresentation doubleR = new DoubleNumberRepresentation(0d);
 		assertFalse(doubleR.isOperator());
 	}
 
 	@Test
 	public void testDoubleNumberType() {
-		DoubleNumberRepresentation doubleR = new DoubleNumberRepresentation(0);
+		DoubleNumberRepresentation doubleR = new DoubleNumberRepresentation(0d);
 		assertTrue(!doubleR.isOperator() && !doubleR.isBlockStart() && !doubleR.isBlockEnd());
 	}
 	
@@ -51,7 +51,7 @@ public class NumberRepresentationTest {
 	
 	@Test
 	public void testNumberPriority() {
-		DoubleNumberRepresentation doubleR = new DoubleNumberRepresentation(0);
+		DoubleNumberRepresentation doubleR = new DoubleNumberRepresentation(0d);
 		assertEquals(0, doubleR.getPriority());
 	}
 }
