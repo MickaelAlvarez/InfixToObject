@@ -9,13 +9,15 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import elements.binaryOperator.BinaryOperator;
-import elements.number.UnaryOperator;
-import elements.representation.IElementRepresentation;
-import elements.representation.number.DoubleNumberRepresentation;
-import elements.representation.operator.AdditionRepresentation;
-import elements.representation.operator.SubstractRepresentation;
-import engine.exception.ConvertorException;
+import fr.mickmouette.core.elements.generated.BinaryOperator;
+import fr.mickmouette.core.elements.generated.UnaryOperator;
+import fr.mickmouette.core.elements.representation.IElementRepresentation;
+import fr.mickmouette.core.engine.InfixConvertor;
+import fr.mickmouette.core.engine.PrefixToObject;
+import fr.mickmouette.core.engine.exception.ConvertorException;
+import fr.mickmouette.math.representation.AdditionRepresentation;
+import fr.mickmouette.math.representation.DoubleNumberRepresentation;
+import fr.mickmouette.math.representation.SubstractRepresentation;
 
 public class InfixConvertorTest {
     private InfixConvertor<Double> convertor;

@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import elements.IEquation;
-import elements.binaryOperator.Subtractor;
+import fr.mickmouette.core.elements.IEquation;
+import fr.mickmouette.math.generated.Subtractor;
 
 public class SubtractorDoubleOperatorTest {
 	private IEquation<Double> valueOne, valueTwo;

@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import elements.representation.number.DoubleNumberRepresentation;
+import fr.mickmouette.math.representation.DoubleNumberRepresentation;
 
 public class NumberRepresentationTest {
 

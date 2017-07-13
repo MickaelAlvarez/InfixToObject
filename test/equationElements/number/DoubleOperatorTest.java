@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import elements.IEquation;
-import elements.number.DoubleOperator;
+import fr.mickmouette.core.elements.IEquation;
+import fr.mickmouette.math.generated.DoubleOperator;
 
 public class DoubleOperatorTest {
 

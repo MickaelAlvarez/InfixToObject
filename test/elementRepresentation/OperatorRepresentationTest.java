@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import elements.IEquation;
-import elements.binaryOperator.Adder;
-import elements.binaryOperator.Multiplier;
-import elements.binaryOperator.Subtractor;
-import elements.representation.operator.AdditionRepresentation;
-import elements.representation.operator.MultiplicationRepresentation;
-import elements.representation.operator.OperatorRepresentation;
-import elements.representation.operator.SubstractRepresentation;
+import fr.mickmouette.core.elements.IEquation;
+import fr.mickmouette.core.elements.representation.OperatorRepresentation;
+import fr.mickmouette.math.generated.Adder;
+import fr.mickmouette.math.generated.Multiplier;
+import fr.mickmouette.math.generated.Subtractor;
+import fr.mickmouette.math.representation.AdditionRepresentation;
+import fr.mickmouette.math.representation.MultiplicationRepresentation;
+import fr.mickmouette.math.representation.SubstractRepresentation;
 
 public class OperatorRepresentationTest {
 	private IEquation<Double> value = new IEquation<Double>() {

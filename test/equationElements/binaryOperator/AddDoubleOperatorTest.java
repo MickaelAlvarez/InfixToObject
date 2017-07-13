@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import elements.IEquation;
-import elements.binaryOperator.Adder;
+import fr.mickmouette.core.elements.IEquation;
+import fr.mickmouette.math.generated.Adder;
 
 public class AddDoubleOperatorTest {
 	private IEquation<Double> valueOne;

@@ -6,15 +6,16 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import elements.representation.IElementRepresentation;
-import elements.representation.number.DoubleNumberRepresentation;
-import elements.representation.operator.AdditionRepresentation;
-import elements.representation.operator.DivisionRepresentation;
-import elements.representation.operator.MultiplicationRepresentation;
-import elements.representation.operator.PowerRepresentation;
-import elements.representation.operator.SubstractRepresentation;
-import elements.representation.operator.block.CloseParentheseRepresentation;
-import elements.representation.operator.block.OpenParentheseRepresentation;
+import fr.mickmouette.core.elements.representation.IElementRepresentation;
+import fr.mickmouette.core.engine.InfixToPrefix;
+import fr.mickmouette.math.representation.AdditionRepresentation;
+import fr.mickmouette.math.representation.CloseParentheseRepresentation;
+import fr.mickmouette.math.representation.DivisionRepresentation;
+import fr.mickmouette.math.representation.DoubleNumberRepresentation;
+import fr.mickmouette.math.representation.MultiplicationRepresentation;
+import fr.mickmouette.math.representation.OpenParentheseRepresentation;
+import fr.mickmouette.math.representation.PowerRepresentation;
+import fr.mickmouette.math.representation.SubstractRepresentation;
 
 public class InfixToPrefixTest {
 

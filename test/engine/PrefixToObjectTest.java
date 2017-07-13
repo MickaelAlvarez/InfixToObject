@@ -9,16 +9,17 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import elements.binaryOperator.Adder;
-import elements.binaryOperator.Multiplier;
-import elements.binaryOperator.Subtractor;
-import elements.number.UnaryOperator;
-import elements.representation.IElementRepresentation;
-import elements.representation.number.DoubleNumberRepresentation;
-import elements.representation.operator.AdditionRepresentation;
-import elements.representation.operator.MultiplicationRepresentation;
-import elements.representation.operator.SubstractRepresentation;
-import engine.exception.ConvertorException;
+import fr.mickmouette.core.elements.generated.UnaryOperator;
+import fr.mickmouette.core.elements.representation.IElementRepresentation;
+import fr.mickmouette.core.engine.PrefixToObject;
+import fr.mickmouette.core.engine.exception.ConvertorException;
+import fr.mickmouette.math.generated.Adder;
+import fr.mickmouette.math.generated.Multiplier;
+import fr.mickmouette.math.generated.Subtractor;
+import fr.mickmouette.math.representation.AdditionRepresentation;
+import fr.mickmouette.math.representation.DoubleNumberRepresentation;
+import fr.mickmouette.math.representation.MultiplicationRepresentation;
+import fr.mickmouette.math.representation.SubstractRepresentation;
 
 public class PrefixToObjectTest {
     private PrefixToObject<Double> convertor;
