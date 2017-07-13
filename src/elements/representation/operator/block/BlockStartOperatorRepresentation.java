@@ -1,8 +1,6 @@
 package elements.representation.operator.block;
 
-import elements.representation.operator.BlockRepresentation;
-
-public abstract class BlockStartOperatorRepresentation extends BlockRepresentation {
+public abstract class BlockStartOperatorRepresentation<T> extends BlockRepresentation<T> {
 	@Override
 	public boolean isBlockStart() {
 		return true;

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import elements.IEquation;
 import elements.representation.IElementRepresentation;
-import elements.representation.number.DoubleNumberRepresentation;
 import elements.representation.number.NumberRepresentation;
 import elements.representation.operator.OperatorRepresentation;
+import engine.exception.ConvertorException;
 import engine.exception.WrongPrefixFormatError;
 
 public class PrefixToObject<T> implements Convertor<T> {
@@ -15,9 +15,8 @@ public class PrefixToObject<T> implements Convertor<T> {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public IEquation<T> convert(ArrayList<IElementRepresentation> equation) throws WrongPrefixFormatError {
+	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws ConvertorException {
 		if (equation.get(0).isOperator()) {
 			int rightOperandStartIndex = getRightOperandStartIndex(equation);
 			OperatorRepresentation<T> operator = (OperatorRepresentation<T>) equation.get(0);
@@ -31,7 +30,7 @@ public class PrefixToObject<T> implements Convertor<T> {
 		}
 	}
 
-	private int getRightOperandStartIndex(ArrayList<IElementRepresentation> equation) {
+	private int getRightOperandStartIndex(ArrayList<IElementRepresentation<T>> equation) {
 		int index = 0, numberNeeded = 0;
 		
 		if(!equation.get(1).isOperator()) {

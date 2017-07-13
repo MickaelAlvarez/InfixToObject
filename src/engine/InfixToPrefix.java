@@ -12,15 +12,15 @@ import elements.representation.IElementRepresentation;
  * @author mickmouette
  *
  */
-public class InfixToPrefix {
+public class InfixToPrefix<V> {
 
-    public static ArrayList<IElementRepresentation> convert(ArrayList<IElementRepresentation> infixEq) {
-        Stack<IElementRepresentation> stack = new Stack<IElementRepresentation>();
-        ArrayList<IElementRepresentation> prefixedEq = new ArrayList<IElementRepresentation>();
-        ArrayList<IElementRepresentation> reversedInfix = new ArrayList<IElementRepresentation>(infixEq);
+    public ArrayList<IElementRepresentation<V>> convert(ArrayList<IElementRepresentation<V>> infixEq) {
+        Stack<IElementRepresentation<V>> stack = new Stack<IElementRepresentation<V>>();
+        ArrayList<IElementRepresentation<V>> prefixedEq = new ArrayList<IElementRepresentation<V>>();
+        ArrayList<IElementRepresentation<V>> reversedInfix = new ArrayList<IElementRepresentation<V>>(infixEq);
         Collections.reverse(reversedInfix);
 
-        for (IElementRepresentation element : reversedInfix) {
+        for (IElementRepresentation<V> element : reversedInfix) {
             if (!element.isOperator()) {
             	prefixedEq.add(element);
             } else {

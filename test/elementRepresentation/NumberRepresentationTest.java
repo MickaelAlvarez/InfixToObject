@@ -46,7 +46,7 @@ public class NumberRepresentationTest {
 	public void testDoubleNumberValue() {
 		double expected = 12.345d;
 		DoubleNumberRepresentation doubleR = new DoubleNumberRepresentation(expected);
-		assertEquals(expected, doubleR.getDouble().doubleValue(), 0);
+		assertEquals(expected, doubleR.getValue().doubleValue(), 0);
 	}
 	
 	@Test

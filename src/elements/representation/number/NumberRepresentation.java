@@ -3,7 +3,7 @@ package elements.representation.number;
 import elements.number.UnaryOperator;
 import elements.representation.IElementRepresentation;
 
-public abstract class NumberRepresentation<T> implements IElementRepresentation {
+public abstract class NumberRepresentation<T> implements IElementRepresentation<T> {
 	protected T value;
 	public abstract UnaryOperator<T> build();
 

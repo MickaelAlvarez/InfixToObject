@@ -18,7 +18,7 @@ import elements.representation.number.DoubleNumberRepresentation;
 import elements.representation.operator.AdditionRepresentation;
 import elements.representation.operator.MultiplicationRepresentation;
 import elements.representation.operator.SubstractRepresentation;
-import engine.exception.WrongPrefixFormatError;
+import engine.exception.ConvertorException;
 
 public class PrefixToObjectTest {
     private PrefixToObject<Double> convertor;
@@ -30,13 +30,13 @@ public class PrefixToObjectTest {
 
     @Test
     public void shouldConvertANumber() {
-    	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation value = new DoubleNumberRepresentation(1d);
+    	ArrayList<IElementRepresentation<Double>> INPUT = new ArrayList<>();
+    	IElementRepresentation<Double> value = new DoubleNumberRepresentation(1d);
     	INPUT.add(value);
         try {
             assertTrue(convertor.convert(INPUT) instanceof UnaryOperator<?>);
-            assertEquals(value.getDouble(), convertor.convert(INPUT).apply().doubleValue(), 0);
-        } catch (WrongPrefixFormatError e) {
+            assertEquals(value.getValue(), convertor.convert(INPUT).apply().doubleValue(), 0);
+        } catch (ConvertorException e) {
             fail();
         }
 
@@ -44,13 +44,13 @@ public class PrefixToObjectTest {
 
     @Test
     public void shouldConvertAnOtherNumber() {
-    	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation value = new DoubleNumberRepresentation(10d);
+    	ArrayList<IElementRepresentation<Double>> INPUT = new ArrayList<>();
+    	IElementRepresentation<Double> value = new DoubleNumberRepresentation(10d);
     	INPUT.add(value);
         try {
         	assertTrue(convertor.convert(INPUT) instanceof UnaryOperator<?>);
-            assertEquals(value.getDouble(), convertor.convert(INPUT).apply().doubleValue(), 0);
-        } catch (WrongPrefixFormatError e) {
+            assertEquals(value.getValue(), convertor.convert(INPUT).apply().doubleValue(), 0);
+        } catch (ConvertorException e) {
             fail();
         }
     }
@@ -60,17 +60,17 @@ public class PrefixToObjectTest {
      */
     @Test
     public void shouldConvertAnAddition() {
-    	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation value1 = new DoubleNumberRepresentation(1d);
-    	IElementRepresentation addition = new AdditionRepresentation();
-    	IElementRepresentation value2 = new DoubleNumberRepresentation(1d);
+    	ArrayList<IElementRepresentation<Double>> INPUT = new ArrayList<>();
+    	IElementRepresentation<Double> value1 = new DoubleNumberRepresentation(1d);
+    	IElementRepresentation<Double> addition = new AdditionRepresentation();
+    	IElementRepresentation<Double> value2 = new DoubleNumberRepresentation(1d);
     	INPUT.add(addition);
     	INPUT.add(value1);
     	INPUT.add(value2);
         try {
         	assertTrue(convertor.convert(INPUT) instanceof Adder);
             assertEquals(2d, convertor.convert(INPUT).apply().doubleValue(), 0);
-        } catch (WrongPrefixFormatError e) {
+        } catch (ConvertorException e) {
             fail();
         }
     }
@@ -80,9 +80,9 @@ public class PrefixToObjectTest {
      */
     @Test
     public void shouldConvertTwoAddition() {
-    	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation value1 = new DoubleNumberRepresentation(1d);
-    	IElementRepresentation addition = new AdditionRepresentation();
+    	ArrayList<IElementRepresentation<Double>> INPUT = new ArrayList<>();
+    	IElementRepresentation<Double> value1 = new DoubleNumberRepresentation(1d);
+    	IElementRepresentation<Double> addition = new AdditionRepresentation();
     	INPUT.add(addition);
     	INPUT.add(addition);
     	INPUT.add(value1);
@@ -91,7 +91,7 @@ public class PrefixToObjectTest {
         try {
         	assertTrue(convertor.convert(INPUT) instanceof Adder);
             assertEquals(3d, convertor.convert(INPUT).apply().doubleValue(), 0);
-        } catch (WrongPrefixFormatError e) {
+        } catch (ConvertorException e) {
             fail();
         }
     }
@@ -101,17 +101,17 @@ public class PrefixToObjectTest {
      */
     @Test
     public void shouldConvertASubstraction() {
-    	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation value1 = new DoubleNumberRepresentation(1d);
-    	IElementRepresentation substraction = new SubstractRepresentation();
-    	IElementRepresentation value2 = new DoubleNumberRepresentation(1d);
+    	ArrayList<IElementRepresentation<Double>> INPUT = new ArrayList<>();
+    	IElementRepresentation<Double> value1 = new DoubleNumberRepresentation(1d);
+    	IElementRepresentation<Double> substraction = new SubstractRepresentation();
+    	IElementRepresentation<Double> value2 = new DoubleNumberRepresentation(1d);
     	INPUT.add(substraction);
     	INPUT.add(value1);
     	INPUT.add(value2);
         try {
         	assertTrue(convertor.convert(INPUT) instanceof Subtractor);
             assertEquals(0d, convertor.convert(INPUT).apply().doubleValue(), 0);
-        } catch (WrongPrefixFormatError e) {
+        } catch (ConvertorException e) {
             fail();
         }
     }
@@ -121,17 +121,17 @@ public class PrefixToObjectTest {
      */
     @Test
     public void shouldConvertAMultiplication() {
-    	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation value1 = new DoubleNumberRepresentation(2d);
-    	IElementRepresentation multiplication = new MultiplicationRepresentation();
-    	IElementRepresentation value2 = new DoubleNumberRepresentation(2d);
+    	ArrayList<IElementRepresentation<Double>> INPUT = new ArrayList<>();
+    	IElementRepresentation<Double> value1 = new DoubleNumberRepresentation(2d);
+    	IElementRepresentation<Double> multiplication = new MultiplicationRepresentation();
+    	IElementRepresentation<Double> value2 = new DoubleNumberRepresentation(2d);
     	INPUT.add(multiplication);
     	INPUT.add(value1);
     	INPUT.add(value2);
         try {
         	assertTrue(convertor.convert(INPUT) instanceof Multiplier);
             assertEquals(4d, convertor.convert(INPUT).apply().doubleValue(), 0);
-        } catch (WrongPrefixFormatError e) {
+        } catch (ConvertorException e) {
             fail();
         }
     }
@@ -141,17 +141,17 @@ public class PrefixToObjectTest {
      */
     @Test
     public void wrongFormatShouldThrowAnError() {
-    	ArrayList<IElementRepresentation> INPUT = new ArrayList<>();
-    	IElementRepresentation value1 = new DoubleNumberRepresentation(1d);
-    	IElementRepresentation addition = new AdditionRepresentation();
-    	IElementRepresentation value2 = new DoubleNumberRepresentation(1d);
+    	ArrayList<IElementRepresentation<Double>> INPUT = new ArrayList<>();
+    	IElementRepresentation<Double> value1 = new DoubleNumberRepresentation(1d);
+    	IElementRepresentation<Double> addition = new AdditionRepresentation();
+    	IElementRepresentation<Double> value2 = new DoubleNumberRepresentation(1d);
     	INPUT.add(value1);
     	INPUT.add(addition);
     	INPUT.add(value2);
         try {
             convertor.convert(INPUT);
             fail();
-        } catch (WrongPrefixFormatError e) {
+        } catch (ConvertorException e) {
             // Should be thrown
         }
     }

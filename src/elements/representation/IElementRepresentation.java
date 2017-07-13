@@ -1,9 +1,9 @@
 package elements.representation;
 
-public interface IElementRepresentation {
+public interface IElementRepresentation<V> {
 	public boolean isOperator();
 	public boolean isBlockStart();
 	public boolean isBlockEnd();
-	public Double getDouble();
+	public V getValue();
 	public int getPriority();
 }

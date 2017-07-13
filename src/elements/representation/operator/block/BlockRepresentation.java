@@ -1,8 +1,8 @@
-package elements.representation.operator;
+package elements.representation.operator.block;
 
 import elements.representation.IElementRepresentation;
 
-public abstract class BlockRepresentation implements IElementRepresentation {
+public abstract class BlockRepresentation<T> implements IElementRepresentation<T> {
 	
 	@Override
 	public boolean isOperator() {
@@ -13,7 +13,7 @@ public abstract class BlockRepresentation implements IElementRepresentation {
 	 * Sould not be called
 	 */
 	@Override
-	public Double getDouble() {
+	public T getValue() {
 		return null;
 	}
 }

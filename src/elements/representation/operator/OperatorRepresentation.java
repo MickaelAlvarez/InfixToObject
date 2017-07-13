@@ -4,7 +4,7 @@ import elements.IEquation;
 import elements.binaryOperator.BinaryOperator;
 import elements.representation.IElementRepresentation;
 
-public abstract class OperatorRepresentation<T> implements IElementRepresentation {
+public abstract class OperatorRepresentation<T> implements IElementRepresentation<T> {
 
 	public abstract BinaryOperator<T> build(IEquation<T> leftEq, IEquation<T> rightEq);
 	
@@ -17,7 +17,7 @@ public abstract class OperatorRepresentation<T> implements IElementRepresentatio
 	 * Sould not be called
 	 */
 	@Override
-	public Double getDouble() {
+	public T getValue() {
 		return null;
 	}
 	

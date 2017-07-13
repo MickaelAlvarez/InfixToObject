@@ -11,7 +11,7 @@ public class DoubleNumberRepresentation extends NumberRepresentation<Double> {
 	}
 
 	@Override
-	public Double getDouble() {
+	public Double getValue() {
 		return value;
 	}
 

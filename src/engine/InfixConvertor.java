@@ -4,17 +4,18 @@ import java.util.ArrayList;
 
 import elements.IEquation;
 import elements.representation.IElementRepresentation;
-import engine.exception.WrongPrefixFormatError;
+import engine.exception.ConvertorException;
 
-public class InfixConvertor implements Convertor<Double> {
-    private PrefixToObject convertor;
+public class InfixConvertor<V> implements Convertor<V> {
+    private PrefixToObject<V> convertor;
 
-    public InfixConvertor(PrefixToObject convertor) {
+    public InfixConvertor(PrefixToObject<V> convertor) {
         this.convertor = convertor;
     }
 
-    public IEquation<Double> convert(ArrayList<IElementRepresentation> equation) throws WrongPrefixFormatError {
+    public IEquation<V> convert(ArrayList<IElementRepresentation<V>> equation) throws ConvertorException {
         // TODO wrong infix format
-        return convertor.convert(InfixToPrefix.convert(equation));
+        return convertor.convert(new InfixToPrefix<V>().convert(equation));
     }
+
 }
