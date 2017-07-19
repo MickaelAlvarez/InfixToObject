@@ -10,8 +10,18 @@ import fr.mickmouette.core.elements.generated.BinaryOperator;
 import fr.mickmouette.core.elements.generated.UnaryOperator;
 import fr.mickmouette.core.elements.generated.ValueOperator;
 
-public abstract class BinaryOperatorRepresentation<T> extends OperatorRepresentation<T> {
-	protected abstract BinaryOperator<T> build(IEquation<T> leftEq, IEquation<T> rightEq);
+public abstract class ValueOperatorRepresentation<T> implements IElementRepresentation<T> {
+	protected T value;
+	protected abstract ValueOperator<T> build();
+	
+	public ValueOperatorRepresentation(T value) {
+		this.value = value;
+	}
+	
+	@Override
+	public boolean isOperator() {
+		return false;
+	}
 	
 	@Override
 	public boolean isBlockStart() {
@@ -22,25 +32,32 @@ public abstract class BinaryOperatorRepresentation<T> extends OperatorRepresenta
 	public boolean isBlockEnd() {
 		return false;
 	}
+
+	@Override
+	public int getPriority() {
+		return 0;
+	}
 	
 	@Override
 	public IElementBuilder<T> getBuilder() {
 		return new IElementBuilder<T>() {
+
 			@Override
 			public ValueOperator<T> buildValueOperator() throws BuildValueOperatorException {
-				throw new BuildValueOperatorException();
+				return build();
 			}
 
 			@Override
 			public BinaryOperator<T> buildBinaryOperator(IEquation<T> leftEq, IEquation<T> rightEq)
 					throws BuildBinaryOperatorException {
-				return build(leftEq, rightEq);
+				throw new BuildBinaryOperatorException();
 			}
 
 			@Override
 			public UnaryOperator<T> buildUnaryOpetor(IEquation<T> eq) throws BuildUnaryOperatorException {
 				throw new BuildUnaryOperatorException();
 			}
+			
 		};
 	}
 }

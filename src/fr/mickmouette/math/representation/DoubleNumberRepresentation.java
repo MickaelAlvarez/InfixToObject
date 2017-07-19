@@ -1,10 +1,10 @@
 package fr.mickmouette.math.representation;
 
-import fr.mickmouette.core.elements.generated.UnaryOperator;
-import fr.mickmouette.core.elements.representation.NumberRepresentation;
+import fr.mickmouette.core.elements.generated.ValueOperator;
+import fr.mickmouette.core.elements.representation.ValueOperatorRepresentation;
 import fr.mickmouette.math.generated.DoubleOperator;
 
-public class DoubleNumberRepresentation extends NumberRepresentation<Double> {
+public class DoubleNumberRepresentation extends ValueOperatorRepresentation<Double> {
 	
 
 	public DoubleNumberRepresentation(Double value) {
@@ -17,7 +17,7 @@ public class DoubleNumberRepresentation extends NumberRepresentation<Double> {
 	}
 
 	@Override
-	public UnaryOperator<Double> build() {
+	public ValueOperator<Double> build() {
 		return new DoubleOperator(value);
 	}
 

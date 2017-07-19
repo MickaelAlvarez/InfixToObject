@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import fr.mickmouette.core.Convertor;
 import fr.mickmouette.core.elements.IEquation;
+import fr.mickmouette.core.elements.exception.BuildException;
 import fr.mickmouette.core.elements.representation.IElementRepresentation;
-import fr.mickmouette.core.elements.representation.NumberRepresentation;
 import fr.mickmouette.core.elements.representation.OperatorRepresentation;
 import fr.mickmouette.core.engine.exception.ConvertorException;
 import fr.mickmouette.core.engine.exception.WrongPrefixFormatError;
@@ -17,14 +17,14 @@ public class PrefixToObject<T> implements Convertor<T> {
 	}
 
 	@Override
-	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws ConvertorException {
+	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws ConvertorException, BuildException {
 		if (equation.get(0).isOperator()) {
 			int rightOperandStartIndex = getRightOperandStartIndex(equation);
 			OperatorRepresentation<T> operator = (OperatorRepresentation<T>) equation.get(0);
-			return operator.build(convert(new ArrayList<>(equation.subList(1, rightOperandStartIndex))), convert(new ArrayList<>(equation.subList(rightOperandStartIndex, equation.size()))));
+			return operator.getBuilder().buildBinaryOperator(convert(new ArrayList<>(equation.subList(1, rightOperandStartIndex))), convert(new ArrayList<>(equation.subList(rightOperandStartIndex, equation.size()))));
 		} else {
 			if (equation.size() == 1) {
-				return ((NumberRepresentation<T>)equation.get(0)).build();
+				return equation.get(0).getBuilder().buildValueOperator();
 			} else {
 				throw new WrongPrefixFormatError(equation);
 			}

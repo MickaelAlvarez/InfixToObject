@@ -1,5 +1,6 @@
 package fr.mickmouette.math.representation;
 
+import fr.mickmouette.core.elements.IElementBuilder;
 import fr.mickmouette.core.elements.representation.BlockStartOperatorRepresentation;
 
 public class OpenParentheseRepresentation<T> extends BlockStartOperatorRepresentation<T> {
@@ -7,6 +8,12 @@ public class OpenParentheseRepresentation<T> extends BlockStartOperatorRepresent
 	@Override
 	public int getPriority() {
 		return 1;
+	}
+
+	@Override
+	public IElementBuilder<T> getBuilder() {
+		// TODO throx Exception
+		return null;
 	}
 
 }

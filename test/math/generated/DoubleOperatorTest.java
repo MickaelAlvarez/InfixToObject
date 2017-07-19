@@ -1,4 +1,4 @@
-package equationElements.number;
+package math.generated;
 
 import static org.junit.Assert.*;
 

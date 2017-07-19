@@ -9,7 +9,7 @@ import fr.mickmouette.core.elements.representation.IElementRepresentation;
 /**
  * Convert from http://scanftree.com/Data_Structure/infix-to-prefix
  * 
- * @author mickmouette
+ * @author Mickael Alvarez
  *
  */
 public class InfixToPrefix<V> {
