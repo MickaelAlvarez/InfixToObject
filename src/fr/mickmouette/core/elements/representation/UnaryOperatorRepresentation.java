@@ -1,11 +1,15 @@
 package fr.mickmouette.core.elements.representation;
 
+import java.util.ArrayList;
+
 import fr.mickmouette.core.elements.IElementBuilder;
 import fr.mickmouette.core.elements.IEquation;
 import fr.mickmouette.core.elements.exception.BuildBinaryOperatorException;
 import fr.mickmouette.core.elements.exception.BuildBlockOperatorException;
+import fr.mickmouette.core.elements.exception.BuildException;
 import fr.mickmouette.core.elements.exception.BuildUnaryOperatorException;
 import fr.mickmouette.core.elements.exception.BuildValueOperatorException;
+import fr.mickmouette.core.elements.exception.convertion.OperandUnaryOperatorException;
 import fr.mickmouette.core.elements.generated.BinaryOperator;
 import fr.mickmouette.core.elements.generated.UnaryOperator;
 import fr.mickmouette.core.elements.generated.ValueOperator;
@@ -22,6 +26,15 @@ public abstract class UnaryOperatorRepresentation<T> extends OperatorRepresentat
 	public boolean isBlockEnd() {
 		return false;
 	}
+	
+	@Override
+	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws BuildException {
+		if(equation == null || equation.isEmpty()) {
+			throw new OperandUnaryOperatorException();
+		}
+		
+		return getBuilder().buildUnaryOperator(equation.get(0).convert(new ArrayList<>(equation.subList(1, equation.size()))));
+	}
 
 	@Override
 	public IElementBuilder<T> getBuilder() throws BuildBlockOperatorException {
@@ -33,7 +46,7 @@ public abstract class UnaryOperatorRepresentation<T> extends OperatorRepresentat
 			}
 
 			@Override
-			public UnaryOperator<T> buildUnaryOpetor(IEquation<T> eq) throws BuildUnaryOperatorException {
+			public UnaryOperator<T> buildUnaryOperator(IEquation<T> eq) throws BuildUnaryOperatorException {
 				return build(eq);
 			}
 

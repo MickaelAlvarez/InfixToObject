@@ -58,7 +58,7 @@ public class BinaryOperatorRepresentationTest {
 	@Test
 	public void shouldNotBuildAUnaryOperator() {
 		try {
-			representation.getBuilder().buildUnaryOpetor(null);
+			representation.getBuilder().buildUnaryOperator(null);
 			fail();
 		} catch (BuildUnaryOperatorException e) {
 			// Should be called

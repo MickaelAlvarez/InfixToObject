@@ -59,14 +59,13 @@ public class UnaryOperatorRepresentationTest {
 			fail();
 		} catch (BuildBlockOperatorException e) {
 		} catch (BuildBinaryOperatorException e) {
-			e.printStackTrace();
 		}
 	}
 	
 	@Test
 	public void shouldBuildAnUnaryOperator() {
 		try {
-			representation.getBuilder().buildUnaryOpetor(null);
+			representation.getBuilder().buildUnaryOperator(null);
 		} catch (BuildUnaryOperatorException e) {
 			fail();
 		} catch (BuildBlockOperatorException e) {

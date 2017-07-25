@@ -10,6 +10,6 @@ import fr.mickmouette.core.elements.generated.ValueOperator;
 
 public interface IElementBuilder<T> {
 	ValueOperator<T> buildValueOperator() throws BuildValueOperatorException;
-	UnaryOperator<T> buildUnaryOpetor(IEquation<T> eq) throws BuildUnaryOperatorException;
+	UnaryOperator<T> buildUnaryOperator(IEquation<T> eq) throws BuildUnaryOperatorException;
 	BinaryOperator<T> buildBinaryOperator(IEquation<T> leftEq, IEquation<T> rightEq) throws BuildBinaryOperatorException;
 }
