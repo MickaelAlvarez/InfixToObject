@@ -9,7 +9,8 @@ import fr.mickmouette.core.elements.exception.BuildBlockOperatorException;
 import fr.mickmouette.core.elements.exception.BuildException;
 import fr.mickmouette.core.elements.exception.BuildUnaryOperatorException;
 import fr.mickmouette.core.elements.exception.BuildValueOperatorException;
-import fr.mickmouette.core.elements.exception.convertion.OperandUnaryOperatorException;
+import fr.mickmouette.core.elements.exception.convertion.ConvertionException;
+import fr.mickmouette.core.elements.exception.convertion.ConvertUnaryOperatorException;
 import fr.mickmouette.core.elements.generated.BinaryOperator;
 import fr.mickmouette.core.elements.generated.UnaryOperator;
 import fr.mickmouette.core.elements.generated.ValueOperator;
@@ -28,9 +29,9 @@ public abstract class UnaryOperatorRepresentation<T> extends OperatorRepresentat
 	}
 	
 	@Override
-	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws BuildException {
+	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws BuildException, ConvertionException {
 		if(equation == null || equation.isEmpty()) {
-			throw new OperandUnaryOperatorException();
+			throw new ConvertUnaryOperatorException();
 		}
 		
 		return getBuilder().buildUnaryOperator(equation.get(0).convert(new ArrayList<>(equation.subList(1, equation.size()))));

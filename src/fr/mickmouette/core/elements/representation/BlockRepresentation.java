@@ -7,7 +7,8 @@ import fr.mickmouette.core.elements.IEquation;
 import fr.mickmouette.core.elements.exception.BuildBlockOperatorException;
 import fr.mickmouette.core.elements.exception.BuildException;
 import fr.mickmouette.core.elements.exception.DontHaveAValueException;
-import fr.mickmouette.core.elements.exception.convertion.OperandBlockRepresentationOperatorException;
+import fr.mickmouette.core.elements.exception.convertion.ConvertionException;
+import fr.mickmouette.core.elements.exception.convertion.ConvertBlockRepresentationOperatorException;
 
 public abstract class BlockRepresentation<T> implements IElementRepresentation<T> {
 	
@@ -27,7 +28,7 @@ public abstract class BlockRepresentation<T> implements IElementRepresentation<T
 	}
 	
 	@Override
-	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws BuildException {
-		throw new OperandBlockRepresentationOperatorException();
+	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws BuildException, ConvertionException {
+		throw new ConvertBlockRepresentationOperatorException();
 	}
 }

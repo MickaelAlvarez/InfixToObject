@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import fr.mickmouette.core.Convertor;
 import fr.mickmouette.core.elements.IEquation;
 import fr.mickmouette.core.elements.exception.BuildException;
+import fr.mickmouette.core.elements.exception.convertion.ConvertionException;
 import fr.mickmouette.core.elements.representation.IElementRepresentation;
-import fr.mickmouette.core.engine.exception.ConvertorException;
 
 /**
  * Transform an infixed formatted list of IElementRepresentation into an IEquation
@@ -22,8 +22,7 @@ public class InfixConvertor<V> implements Convertor<V> {
         this.convertor = convertor;
     }
 
-    public IEquation<V> convert(ArrayList<IElementRepresentation<V>> equation) throws ConvertorException, BuildException {
-        // TODO wrong infix format
+    public IEquation<V> convert(ArrayList<IElementRepresentation<V>> equation) throws BuildException, ConvertionException {
         return convertor.convert(new InfixToPrefix<V>().convert(equation));
     }
 

@@ -9,7 +9,8 @@ import fr.mickmouette.core.elements.exception.BuildBinaryOperatorException;
 import fr.mickmouette.core.elements.exception.BuildException;
 import fr.mickmouette.core.elements.exception.BuildUnaryOperatorException;
 import fr.mickmouette.core.elements.exception.BuildValueOperatorException;
-import fr.mickmouette.core.elements.exception.convertion.OperandBinaryOperatorException;
+import fr.mickmouette.core.elements.exception.convertion.ConvertionException;
+import fr.mickmouette.core.elements.exception.convertion.ConvertBinaryOperatorException;
 import fr.mickmouette.core.elements.generated.BinaryOperator;
 import fr.mickmouette.core.elements.generated.UnaryOperator;
 import fr.mickmouette.core.elements.generated.ValueOperator;
@@ -28,9 +29,9 @@ public abstract class BinaryOperatorRepresentation<T> extends OperatorRepresenta
 	}
 	
 	@Override
-	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws BuildException {
+	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws BuildException, ConvertionException {
 		if(equation == null || equation.size() < 2) {
-			throw new OperandBinaryOperatorException();
+			throw new ConvertBinaryOperatorException();
 		}
 		
 		int rightOperandStartIndex = getRightOperandStartIndex(equation);

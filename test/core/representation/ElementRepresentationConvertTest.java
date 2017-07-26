@@ -10,9 +10,8 @@ import org.mockito.Mockito;
 
 import fr.mickmouette.core.elements.IEquation;
 import fr.mickmouette.core.elements.exception.BuildException;
-import fr.mickmouette.core.elements.exception.BuildValueOperatorException;
 import fr.mickmouette.core.elements.exception.DontHaveAValueException;
-import fr.mickmouette.core.elements.exception.convertion.OperandBinaryOperatorException;
+import fr.mickmouette.core.elements.exception.convertion.ConvertionException;
 import fr.mickmouette.core.elements.generated.BinaryOperator;
 import fr.mickmouette.core.elements.generated.UnaryOperator;
 import fr.mickmouette.core.elements.generated.ValueOperator;
@@ -46,7 +45,7 @@ public class ElementRepresentationConvertTest {
 		
 		try {
 			assertTrue(valueRepresentation.convert(null) instanceof ValueOperator<?>);
-		} catch (BuildValueOperatorException e) {
+		} catch (BuildException | ConvertionException e) {
 			fail();
 		}
 	}
@@ -77,11 +76,12 @@ public class ElementRepresentationConvertTest {
 		try {
 			valueRepresentation.convert(operand);
 			fail();
-		} catch (BuildValueOperatorException e) {
+		} catch (BuildException | ConvertionException e) {
 			// Should be thrown
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void unaryOperatorRepresentationShouldBeConvertedToAnUnaryOperator() {
 		UnaryOperatorRepresentation<Void> representation = new UnaryOperatorRepresentation<Void>() {
@@ -102,7 +102,7 @@ public class ElementRepresentationConvertTest {
 		
 		try {
 			assertTrue(representation.convert(eqs) instanceof UnaryOperator<?>);
-		} catch (BuildException e) {
+		} catch (BuildException | ConvertionException e) {
 			fail();
 		}
 	}
@@ -117,6 +117,7 @@ public class ElementRepresentationConvertTest {
 			
 			@Override
 			protected UnaryOperator<Void> build(IEquation<Void> eq) {
+				@SuppressWarnings("unchecked")
 				UnaryOperator<Void> operator = Mockito.mock(UnaryOperator.class);
 				return operator;
 			}
@@ -125,7 +126,7 @@ public class ElementRepresentationConvertTest {
 		try {
 			representation.convert(null);
 			fail();
-		} catch (BuildException e) {
+		} catch (BuildException | ConvertionException e) {
 			// Should be thrown
 		}
 	}
@@ -140,6 +141,7 @@ public class ElementRepresentationConvertTest {
 			
 			@Override
 			protected UnaryOperator<Void> build(IEquation<Void> eq) {
+				@SuppressWarnings("unchecked")
 				UnaryOperator<Void> operator = Mockito.mock(UnaryOperator.class);
 				return operator;
 			}
@@ -148,7 +150,7 @@ public class ElementRepresentationConvertTest {
 		try {
 			representation.convert(new ArrayList<>());
 			fail();
-		} catch (BuildException e) {
+		} catch (BuildException | ConvertionException e) {
 			// Should be thrown
 		}
 	}
@@ -176,13 +178,13 @@ public class ElementRepresentationConvertTest {
 		
 		try {
 			representation.convert(eqs);
-		} catch (BuildException e) {
+		} catch (BuildException | ConvertionException e) {
 			fail();
 		}
 		
 		try {
 			Mockito.verify(operand, Mockito.times(1)).convert(new ArrayList<>());
-		} catch (BuildException e) {
+		} catch (BuildException | ConvertionException e) {
 			e.printStackTrace();
 		}
 	}
@@ -210,7 +212,7 @@ public class ElementRepresentationConvertTest {
 		
 		try {
 			assertTrue(representation.convert(eqs) instanceof BinaryOperator<?>);
-		} catch (BuildException e) {
+		} catch (BuildException | ConvertionException e) {
 			fail();
 		}
 	}
@@ -233,7 +235,7 @@ public class ElementRepresentationConvertTest {
 		try {
 			representation.convert(null);
 			fail();
-		} catch (OperandBinaryOperatorException e) {
+		} catch (ConvertionException e) {
 			// Should be thrown
 		} catch (BuildException e) {
 			fail();
@@ -256,6 +258,7 @@ public class ElementRepresentationConvertTest {
 			
 		};
 		
+		@SuppressWarnings("unchecked")
 		IElementRepresentation<Void> element = Mockito.mock(IElementRepresentation.class);
 		ArrayList<IElementRepresentation<Void>> eqs = new ArrayList<>();
 		eqs.add(element);
@@ -263,7 +266,7 @@ public class ElementRepresentationConvertTest {
 		try {
 			representation.convert(eqs);
 			fail();
-		} catch (BuildException e) {
+		} catch (BuildException | ConvertionException e) {
 			// Should be thrown
 		}
 	}
@@ -291,13 +294,13 @@ public class ElementRepresentationConvertTest {
 		
 		try {
 			representation.convert(eqs);
-		} catch (BuildException e) {
+		} catch (BuildException | ConvertionException e) {
 			fail();
 		}
 		
 		try {
 			Mockito.verify(operand, Mockito.times(2)).convert(new ArrayList<>());
-		} catch (BuildException e) {
+		} catch (BuildException | ConvertionException e) {
 			e.printStackTrace();
 		}
 	}
