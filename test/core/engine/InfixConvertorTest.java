@@ -9,7 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import fr.mickmouette.core.elements.exception.BuildException;
 import fr.mickmouette.core.elements.exception.convertion.ConvertionException;
 import fr.mickmouette.core.elements.representation.IElementRepresentation;
 import fr.mickmouette.core.engine.InfixConvertor;
@@ -37,7 +36,7 @@ public class InfixConvertorTest {
 		try {
 			convertor.convert(INPUT);
 			Mockito.verify(prefixConvertor, Mockito.times(1)).convert(INPUT);
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			fail();
 		}
 	}

@@ -9,7 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import fr.mickmouette.core.elements.exception.BuildException;
 import fr.mickmouette.core.elements.exception.convertion.ConvertionException;
 import fr.mickmouette.core.elements.representation.IElementRepresentation;
 import fr.mickmouette.core.engine.PrefixToObject;
@@ -39,7 +38,7 @@ public class PrefixToObjectTest {
 		try {
 			convertor.convert(INPUT);
 			Mockito.verify(operator, Mockito.times(1)).convert(new ArrayList<>(INPUT.subList(1, 2)));
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			fail();
 		}
 	}

@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fr.mickmouette.core.elements.exception.BuildBinaryOperatorException;
-import fr.mickmouette.core.elements.exception.BuildValueOperatorException;
 import fr.mickmouette.core.elements.exception.DontHaveAValueException;
 import fr.mickmouette.core.elements.generated.ValueOperator;
 import fr.mickmouette.core.elements.representation.ValueOperatorRepresentation;
@@ -46,35 +44,6 @@ public class ValueOperatorRepresentationTest {
 		try {
 			assertEquals(VALUE, classicalRepresentation.getValue().intValue());
 		} catch (DontHaveAValueException e) {
-			fail();
-		}
-	}
-	
-	@Test
-	public void shouldNotBuildABinaryOperator() {
-		try {
-			classicalRepresentation.getBuilder().buildBinaryOperator(null, null);
-			fail();
-		} catch (BuildBinaryOperatorException e) {
-			// Should be throw
-		}
-	}
-	
-	@Test
-	public void shouldNotBuildAnUnaryOperator() {
-		try {
-			classicalRepresentation.getBuilder().buildBinaryOperator(null, null);
-			fail();
-		} catch (BuildBinaryOperatorException e) {
-			// Should be throw
-		}
-	}
-	
-	@Test
-	public void shouldBuildAValueOperator() {
-		try {
-			classicalRepresentation.getBuilder().buildValueOperator();
-		} catch (BuildValueOperatorException e) {
 			fail();
 		}
 	}

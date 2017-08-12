@@ -7,11 +7,7 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import core.generated.stubs.StubOperator;
 import fr.mickmouette.core.elements.IEquation;
-import fr.mickmouette.core.elements.exception.BuildBinaryOperatorException;
-import fr.mickmouette.core.elements.exception.BuildUnaryOperatorException;
-import fr.mickmouette.core.elements.exception.BuildValueOperatorException;
 import fr.mickmouette.core.elements.exception.DontHaveAValueException;
 import fr.mickmouette.core.elements.generated.BinaryOperator;
 import fr.mickmouette.core.elements.representation.BinaryOperatorRepresentation;
@@ -43,35 +39,6 @@ public class BinaryOperatorRepresentationTest {
 	public void shouldNotBeABlock() {
 		assertFalse(representation.isBlockStart());
 		assertFalse(representation.isBlockEnd());
-	}
-	
-	@Test
-	public void shouldNotBuildAValue() {
-		try {
-			representation.getBuilder().buildValueOperator();
-			fail();
-		} catch (BuildValueOperatorException e) {
-			// Should be called
-		}
-	}
-	
-	@Test
-	public void shouldNotBuildAUnaryOperator() {
-		try {
-			representation.getBuilder().buildUnaryOperator(null);
-			fail();
-		} catch (BuildUnaryOperatorException e) {
-			// Should be called
-		}
-	}
-	
-	@Test
-	public void shouldBuildABinaryOperator() {
-		try {
-			assertTrue(representation.getBuilder().buildBinaryOperator(new StubOperator(), new StubOperator()) instanceof BinaryOperator<?>);
-		} catch (BuildBinaryOperatorException e) {
-			fail(e.getMessage());
-		}
 	}
 	
 	@Test

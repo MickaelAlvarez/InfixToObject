@@ -1,6 +1,6 @@
 package fr.mickmouette.core.elements.exception;
 
-public class DontHaveAValueException extends BuildException {
+public class DontHaveAValueException extends Exception {
 	/**
 	 * 
 	 */

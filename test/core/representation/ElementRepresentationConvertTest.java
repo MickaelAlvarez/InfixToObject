@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import fr.mickmouette.core.elements.IEquation;
-import fr.mickmouette.core.elements.exception.BuildException;
 import fr.mickmouette.core.elements.exception.DontHaveAValueException;
 import fr.mickmouette.core.elements.exception.convertion.ConvertionException;
 import fr.mickmouette.core.elements.generated.BinaryOperator;
@@ -45,7 +44,7 @@ public class ElementRepresentationConvertTest {
 		
 		try {
 			assertTrue(valueRepresentation.convert(null) instanceof ValueOperator<?>);
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			fail();
 		}
 	}
@@ -76,7 +75,7 @@ public class ElementRepresentationConvertTest {
 		try {
 			valueRepresentation.convert(operand);
 			fail();
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			// Should be thrown
 		}
 	}
@@ -102,7 +101,7 @@ public class ElementRepresentationConvertTest {
 		
 		try {
 			assertTrue(representation.convert(eqs) instanceof UnaryOperator<?>);
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			fail();
 		}
 	}
@@ -126,7 +125,7 @@ public class ElementRepresentationConvertTest {
 		try {
 			representation.convert(null);
 			fail();
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			// Should be thrown
 		}
 	}
@@ -150,7 +149,7 @@ public class ElementRepresentationConvertTest {
 		try {
 			representation.convert(new ArrayList<>());
 			fail();
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			// Should be thrown
 		}
 	}
@@ -178,13 +177,13 @@ public class ElementRepresentationConvertTest {
 		
 		try {
 			representation.convert(eqs);
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			fail();
 		}
 		
 		try {
 			Mockito.verify(operand, Mockito.times(1)).convert(new ArrayList<>());
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			e.printStackTrace();
 		}
 	}
@@ -212,7 +211,7 @@ public class ElementRepresentationConvertTest {
 		
 		try {
 			assertTrue(representation.convert(eqs) instanceof BinaryOperator<?>);
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			fail();
 		}
 	}
@@ -237,8 +236,6 @@ public class ElementRepresentationConvertTest {
 			fail();
 		} catch (ConvertionException e) {
 			// Should be thrown
-		} catch (BuildException e) {
-			fail();
 		}
 	}
 	
@@ -266,7 +263,7 @@ public class ElementRepresentationConvertTest {
 		try {
 			representation.convert(eqs);
 			fail();
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			// Should be thrown
 		}
 	}
@@ -294,13 +291,13 @@ public class ElementRepresentationConvertTest {
 		
 		try {
 			representation.convert(eqs);
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			fail();
 		}
 		
 		try {
 			Mockito.verify(operand, Mockito.times(2)).convert(new ArrayList<>());
-		} catch (BuildException | ConvertionException e) {
+		} catch (ConvertionException e) {
 			e.printStackTrace();
 		}
 	}

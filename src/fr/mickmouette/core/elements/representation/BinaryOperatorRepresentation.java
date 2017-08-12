@@ -3,17 +3,10 @@ package fr.mickmouette.core.elements.representation;
 
 import java.util.ArrayList;
 
-import fr.mickmouette.core.elements.IElementBuilder;
 import fr.mickmouette.core.elements.IEquation;
-import fr.mickmouette.core.elements.exception.BuildBinaryOperatorException;
-import fr.mickmouette.core.elements.exception.BuildException;
-import fr.mickmouette.core.elements.exception.BuildUnaryOperatorException;
-import fr.mickmouette.core.elements.exception.BuildValueOperatorException;
 import fr.mickmouette.core.elements.exception.convertion.ConvertionException;
 import fr.mickmouette.core.elements.exception.convertion.ConvertBinaryOperatorException;
 import fr.mickmouette.core.elements.generated.BinaryOperator;
-import fr.mickmouette.core.elements.generated.UnaryOperator;
-import fr.mickmouette.core.elements.generated.ValueOperator;
 
 public abstract class BinaryOperatorRepresentation<T> extends OperatorRepresentation<T> {
 	protected abstract BinaryOperator<T> build(IEquation<T> leftEq, IEquation<T> rightEq);
@@ -29,7 +22,7 @@ public abstract class BinaryOperatorRepresentation<T> extends OperatorRepresenta
 	}
 	
 	@Override
-	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws BuildException, ConvertionException {
+	public IEquation<T> convert(ArrayList<IElementRepresentation<T>> equation) throws ConvertionException {
 		if(equation == null || equation.size() < 2) {
 			throw new ConvertBinaryOperatorException();
 		}
@@ -41,28 +34,7 @@ public abstract class BinaryOperatorRepresentation<T> extends OperatorRepresenta
 		IEquation<T> leftEquation = leftEquationRepresentation.get(0).convert(new ArrayList<>(leftEquationRepresentation.subList(1, leftEquationRepresentation.size())));
 		IEquation<T> rightEquation = rightEquationRepresentation.get(0).convert(new ArrayList<>(rightEquationRepresentation.subList(1, rightEquationRepresentation.size())));
 		
-		return getBuilder().buildBinaryOperator(leftEquation, rightEquation);
-	}
-	
-	@Override
-	public IElementBuilder<T> getBuilder() {
-		return new IElementBuilder<T>() {
-			@Override
-			public ValueOperator<T> buildValueOperator() throws BuildValueOperatorException {
-				throw new BuildValueOperatorException();
-			}
-
-			@Override
-			public BinaryOperator<T> buildBinaryOperator(IEquation<T> leftEq, IEquation<T> rightEq)
-					throws BuildBinaryOperatorException {
-				return build(leftEq, rightEq);
-			}
-
-			@Override
-			public UnaryOperator<T> buildUnaryOperator(IEquation<T> eq) throws BuildUnaryOperatorException {
-				throw new BuildUnaryOperatorException();
-			}
-		};
+		return build(leftEquation, rightEquation);
 	}
 	
 	private int getRightOperandStartIndex(ArrayList<IElementRepresentation<T>> equation) {

@@ -5,7 +5,6 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import fr.mickmouette.core.elements.exception.BuildBlockOperatorException;
 import fr.mickmouette.core.elements.exception.DontHaveAValueException;
 import fr.mickmouette.core.elements.representation.BlockEndOperatorRepresentation;
 import fr.mickmouette.core.elements.representation.BlockStartOperatorRepresentation;
@@ -33,17 +32,6 @@ public class BlockOperatorRepresentationTest {
 	@Test
 	public void blockEnd() {
 		assertTrue(representationEnd.isOperator() && representationEnd.isBlockEnd());
-	}
-	
-	@Test
-	public void shouldDontBuild() {
-		try {
-			representationStart.getBuilder();
-			representationEnd.getBuilder();
-			fail();
-		} catch (BuildBlockOperatorException e) {
-			// Should be thrown
-		}
 	}
 	
 	@Test
