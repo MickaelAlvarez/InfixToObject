@@ -88,11 +88,25 @@ new Assigner(v, new Adder(new Value(1), new Value(42)));
 And give a way to recursively compute a custom treatment on all element of this expression. There it set V to 42.
 
 ## Why this project ?
-Creation of an Object version of an infix equation, in order to apply a TDD development and to train to have an architecture as clean as possible.
 ### Why not ?
-### As generic as possible
+This project was not created to change the world, it just came to answer ordered questions I told to me : 
+> How can we easily use polynomials equations in a java program ?
+
+> Then, how can we easily manipulate an equation ?
+
+> Then, as an equation is commonly represented in an infix way, how can we easily translate infix representation to a usable object version ?
+
+So, I think I have to create this last brick (infix to object) to reach the first goal (polynomials equations).
+
+### As generic as possible And MVC (Model View Controller)
+This project is an opportunity to me to train my object architectural skills. 
+On the one hand I tried to make it as clean as possible, and as generic as possible in order to make it usable as library. One the other hand I separated the representation of the generated object, to give the possibility to apply this library in a MVC template, there the representation object can directly be applied on the View.
+
 ### To train me to the TDD development
+As important as the unit testing appear to me for an object oriented program, I tried to apply the TDD (Test Driven Development) principle.
 
 ## How it work
+// TODO UML
 
 ## How to use it
+// TODO Code examples
