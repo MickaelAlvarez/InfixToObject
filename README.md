@@ -106,7 +106,7 @@ As important as the unit testing appear to me for an object oriented program, I 
 
 ## How it work
 ### Global view
-![global view](./doc/main.svg?raw=true "global view")
+![global view](https://raw.githubusercontent.com/MickaelAlvarez/InfixToObject/master/doc/main.svg)
 
 You give a list of IElementRepresentation, which is directly the ordered infix expression elements from left to right that you want to treat. 
 
