@@ -1,15 +1,14 @@
 # InfixToObject
-This project is a library developed to java object developers. It provide a way to easily manipulate any [infix](http://localhost) expressions with an object representation.
+This project is a library developed for java object developers. It provide a way to easily manipulate infix expressions with an object representation.
 
 To explain the goal, I will take a mathematical equation, which have an infix representation. 
 
 ## Example
-
 Look at this equation *V = 1 + 41*, I will named it *E*, after hours of reflections we can found that the result is 42 :).
 
-As you can see *E* is composed of values (*43*, *1*, *C*) and infix elements (*=*, *+*). The common way to solve this simple example, is to apply the add operator to *1* and *41*, and to assign the result to *V*.
+As you can see *E* is composed of values (*43* and *1*) and infix elements (*=*, *+*). The common way to solve this simple example, is to apply the add operator to *1* and *41*, and to assign the result to *V*.
 
-* *1 + 41*
+*1 + 41*
 
 In Object oriented development we can represent this part with an Object that take two value and add them like that 
 
@@ -67,11 +66,11 @@ class Assigner {
 The complete Object representation can be :
 
 ```java
-new Assigner(new Value(), new Adder(new Value(1), new Value(42)));
+Value v = new Value();
+new Assigner(v, new Adder(new Value(1), new Value(42)));
 ```
 
 ## Global view
-
 So the goal of this library is to transform
 
 ```
@@ -94,7 +93,7 @@ This project was not created to change the world, it just came to answer ordered
 
 > Then, how can we easily manipulate an equation ?
 
-> Then, as an equation is commonly represented in an infix way, how can we easily translate infix representation to a usable object version ?
+> Then, as an equation is commonly represented in an infix way, how can we easily translate infix representation to an usable object version ?
 
 So, I think I have to create this last brick (infix to object) to reach the first goal (polynomials equations).
 
@@ -106,7 +105,46 @@ On the one hand I tried to make it as clean as possible, and as generic as possi
 As important as the unit testing appear to me for an object oriented program, I tried to apply the TDD (Test Driven Development) principle.
 
 ## How it work
-// TODO UML
+### Global view
+![main](./doc/main.svg)
+
+You give a list of IElementRepresentation, which is directly the ordered infix expression elements from left to right that you want to treat. 
+
+For example, with
+
+*1 + 2*
+
+You will give the list *{Value(1), Adder(), Value(2)}* where all this list members implements *IElementRepresentation*. Depending of your implementation of the *IElementRepresentation*, the generated IEquation expose you a way to recursively call a method named *apply()*.
+
+The execution behavior must be include in this implementation, we will see next how it work.
+
+### Engine
+The engine come with the *InfixConvertor* class
+
+![InfixConvertor](./doc/InfixConvertor.svg)
+
+And the *InfixConvertor* is split in two parts
+
+![InfixToPrefix & PrefixToObject](./doc/InfixToPrefix&PrefixToObject.svg)
+
+* *PrefixToInfix* is the first step which reorder the prefixed list into an infix one, for example *1 + 2* will became *+ 1 2*
+
+* *PrefixToObject* is the second step, it will construct the *IEquation* by recursively calling the *convert(ArrayList<IElementRepresentation<V>> equation)* method on each prefixed elements. There it will call first *convert()* on *+*, then the *IElementRepresentation* of *+* should itself call *convert()* on *1* and *2*.
 
 ## How to use it
-// TODO Code examples
+There are five main *IElementRepresentation* abstract implementations
+* *BlockStartOperatorRepresentation* and *BlockEndOperatorRepresentation*, which represents a group of infix elements, like parenthesis in equation
+* *ValueOperatorRepresentation*, which represent a value, like an integer
+* *UnaryOperatorRepresentation*, which represent a unary operator, like not (!) in logical expression
+* *BinaryOperatorRepresentation*, which represent a binary operator, like addition
+
+So you just have to override the elements representations you need, to use them like 
+
+```java
+List<IElementRepresentation<A>> infixValues; // there you put the infix representations
+InfixConvertor<A> convertor = new InfixConvertor<A>(new PrefixToObject<A>());
+IEquation<A> equation = convertor.convert(infixValues);
+A result = equation.apply();
+```
+
+Where *A* is the type returned by your implementations of the *apply()* method.
