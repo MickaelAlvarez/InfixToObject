@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/MickaelAlvarez/InfixToObject.svg?branch=master)](https://travis-ci.org/MickaelAlvarez/InfixToObject)
 # InfixToObject
 This project is a library developed for java object developers. It provide a way to easily manipulate infix expressions with an object representation.
 
