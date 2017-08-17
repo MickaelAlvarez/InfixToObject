@@ -121,11 +121,11 @@ The execution behavior must be include in this implementation, we will see next 
 ### Engine
 The engine come with the *InfixConvertor* class
 
-![InfixConvertor](./doc/InfixConvertor.svg)
+![InfixConvertor](./doc/InfixConvertor.png)
 
 And the *InfixConvertor* is split in two parts
 
-![InfixToPrefix & PrefixToObject](./doc/InfixToPrefix&PrefixToObject.svg)
+![InfixToPrefix & PrefixToObject](./doc/InfixToPrefix&PrefixToObject.png)
 
 * *PrefixToInfix* is the first step which reorder the prefixed list into an infix one, for example *1 + 2* will became *+ 1 2*
 
